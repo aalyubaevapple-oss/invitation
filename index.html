@@ -8,16 +8,16 @@
 <title>Свадебные веб-приглашения</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Свадебные веб-приглашения">
-<meta property="og:description" content="Портфолио: семь приглашений с анимацией открытия. Откройте любое на телефоне.">
+<meta property="og:description" content="Портфолио: девять приглашений с анимацией открытия. Откройте любое на телефоне.">
 <meta property="og:url" content="https://aalyubaevapple-oss.github.io/invitation/">
 <meta property="og:image" content="https://aalyubaevapple-oss.github.io/invitation/og/portfolio.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Портфолио: семь веб-приглашений на свадьбу с анимацией открытия, обратным отсчётом, местом, программой дня и дресс-кодом.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Caveat:wght@500&family=Pangolin&family=Great+Vibes&family=Jost:wght@400;500&family=Marck+Script&family=Oswald:wght@600&family=Playfair+Display:ital@1&family=Prata&family=Unbounded:wght@700&display=swap">
+<meta name="description" content="Портфолио: девять веб-приглашений на свадьбу с анимацией открытия, обратным отсчётом, местом, программой дня и дресс-кодом.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Caveat:wght@500&family=Pangolin&family=Great+Vibes&family=Jost:wght@400;500&family=Marck+Script&family=Oswald:wght@600&family=Playfair+Display:ital@1&family=Prata&family=Forum&family=Unbounded:wght@700&display=swap">
 <style>
-/* Витрина: спокойный холодный фон, шесть афиш-«телефонов» в сетке, вся карточка — ссылка. */
+/* Витрина: спокойный холодный фон, афиши-«телефоны» в сетке, вся карточка — ссылка. */
 :root{
   --bg:#ecebf0; --ink:#1d1b22; --soft:#6a6672; --line:#cfcdd6; --accent:#8a3d5c;
   --display:"Prata",Georgia,serif; --body:"Jost","Helvetica Neue",Arial,sans-serif;
@@ -71,6 +71,16 @@ header p{margin:0;color:var(--soft);max-width:36rem}
 .p7 .names{font-family:"Pangolin",cursive;font-size:13cqw;margin-top:22cqw}
 .p7 .cap{font-family:"Caveat",cursive;font-size:8cqw;letter-spacing:0;text-transform:none}
 .p7::after{content:"приглашение на свадьбу ♥ мы женимся";position:absolute;left:0;right:0;bottom:0;background:#cf2459;color:#fff6e0;font-family:"Caveat",cursive;font-size:7.5cqw;white-space:nowrap;overflow:hidden;padding:2cqw 4cqw}
+.p8{color:#f6ede4;background:linear-gradient(to top right,transparent calc(50% - 1px),rgba(30,0,8,.45) 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),rgba(30,0,8,.45) 50%,transparent calc(50% + 1px)),linear-gradient(180deg,#74202f,#5e1424 50%,#460d19)}
+.p8 .dot{width:22cqw;height:22cqw;border-radius:50%;background:radial-gradient(circle at 34% 28%,#f6e2b0,#d9b36c 50%,#a37a35);box-shadow:0 4px 6px rgba(30,0,8,.5)}
+.p8 .names{font-family:"Prata",serif;font-size:10.5cqw;line-height:1.2}
+.p9{background:radial-gradient(ellipse 80% 45% at 50% 62%,rgba(255,200,120,.28),transparent 70%),linear-gradient(180deg,#0b120d,#18241b);color:#ecdcb0}
+.p9 .names{font-family:"Forum",serif;font-size:12cqw;letter-spacing:.07em;text-transform:uppercase;line-height:1.15}
+.p9 .cs{display:flex;align-items:flex-end;gap:7cqw;margin-top:4cqw}
+.p9 .cs i{width:4.6cqw;height:22cqw;border-radius:.6cqw .6cqw 0 0;background:linear-gradient(90deg,#8f8468,#f4ead0 38%,#857a5e);position:relative}
+.p9 .cs i:nth-child(2){height:31cqw}
+.p9 .cs i:nth-child(3){height:17cqw}
+.p9 .cs i::before{content:"";position:absolute;left:50%;bottom:calc(100% + 1.2cqw);width:3.4cqw;height:7cqw;margin-left:-1.7cqw;border-radius:50% 50% 50% 50% / 64% 64% 36% 36%;background:radial-gradient(ellipse at 50% 75%,#fff 0 25%,#ffd27a 60%,#ffa63c);box-shadow:0 0 7cqw 2cqw rgba(255,190,90,.45)}
 footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);color:var(--soft);font-size:.92rem;max-width:44rem}
 </style>
 </head>
@@ -79,7 +89,7 @@ footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);co
   <header>
     <div class="eyebrow">Портфолио</div>
     <h1>Свадебные веб-приглашения</h1>
-    <p>Семь работ в разных стилях. Каждая открывается по ссылке на телефоне: анимация открытия, обратный отсчёт, место, программа дня и дресс-код. Нажмите на любую, чтобы посмотреть вживую.</p>
+    <p>Девять работ в разных стилях. Каждая открывается по ссылке на телефоне: анимация открытия, обратный отсчёт, место, программа дня и дресс-код. Нажмите на любую, чтобы посмотреть вживую.</p>
   </header>
 
   <ul class="grid">
@@ -110,6 +120,14 @@ footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);co
     <li><a class="work" href="finally/">
       <div class="phone p7"><div class="str"></div><div class="hrt">♥</div><div class="names">наконец-то</div><div class="cap">Соня и Даня · 24 июля 2027</div></div>
       <div class="meta"><b>Наконец-то</b><span>Детские фото-наклейки, сердце на ниточке, рукописные буквы</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="bordo/">
+      <div class="phone p8"><div class="names">София<br>и Марк</div><div class="dot"></div><div class="cap">09 · 10 · 2027</div></div>
+      <div class="meta"><b>Бордо</b><span>Тиснёный конверт из четырёх клапанов, золотая печать, календарь с отмеченным днём</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="candle/">
+      <div class="phone p9"><div class="names">Диана<br>и Кирилл</div><div class="cs"><i></i><i></i><i></i></div></div>
+      <div class="meta"><b>Свечи</b><span>Три свечи загораются и высвечивают имена; тёмная зелень и шампань</span><em>Смотреть вживую →</em></div>
     </a></li>
   </ul>
 

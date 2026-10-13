@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#5e1424">
+<title>Бордо · София и Марк</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="София и Марк приглашают на свадьбу">
+<meta property="og:description" content="9 октября 2027 года. Откройте конверт.">
+<meta property="og:url" content="https://aalyubaevapple-oss.github.io/invitation/bordo/">
+<meta property="og:image" content="https://aalyubaevapple-oss.github.io/invitation/og/bordo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Prata&display=swap">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+/* Бордо и крем: конверт из четырёх тиснёных клапанов с золотой печатью, антиква, календарь с отмеченным днём. */
+:root{
+  --paper:#f6ede4; --ink:#4a1420; --ink-soft:#8c6a66; --line:#d6bfb2; --accent:#8c1c2e; --card:#5e1424;
+  --grain:var(--grain-url);
+  --display:"Prata","Playfair Display",Georgia,serif;
+  --body:"Cormorant Garamond","Cormorant",Georgia,serif;
+  --h1-size:clamp(2.6rem,12.5vw,3.5rem); --h2-size:1.8rem; --h-lh:1.15; --fs-body:1.18rem;
+  --num-font:var(--display); --num-style:normal; --num-size:2rem;
+  --pill-bg:var(--accent); --pill-fg:#f6ede4;
+  --card-shadow:0 14px 26px -18px rgba(74,20,32,.7);
+  --w-sky:#f0dcd3; --w-leaf1:#8a9a78; --w-leaf2:#5d6f55; --w-water:#e6cfc4; --w-bloom:#8c1c2e; --w-reed:#6b4a3a;
+  --env:#5e1424; --env-hi:#74202f; --env-lo:#460d19;
+  --seal:#d9b36c; --seal-hi:#f6e2b0; --seal-lo:#a37a35;
+  --cw:min(76vw,21rem,48vh);
+  --bg-delay:1.95s;
+}
+.dress,.back{color:#f6ede4}
+.dress .sw i{box-shadow:inset 0 0 0 1px rgba(246,237,228,.35)}
+.cal{width:100%;max-width:19rem;display:grid;grid-template-columns:repeat(7,1fr);row-gap:.3rem;font-variant-numeric:lining-nums;line-height:1}
+.cal strong{grid-column:1/-1;font-family:var(--display);font-weight:400;font-size:1.5rem;padding-bottom:.7rem}
+.cal em{font-style:normal;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:.4rem}
+.cal span{display:grid;place-items:center;height:2.3rem;font-size:1.12rem}
+.cal .on{position:relative;color:#f6ede4;font-weight:500}
+.cal .on svg{position:absolute;left:50%;top:50%;width:2.5rem;height:2.5rem;margin:-1.2rem 0 0 -1.25rem;z-index:-1;fill:var(--accent)}
+.cal .on{z-index:0}
+/* Конверт: четыре клапана на петлях по краям, под ними карточка, сверху печать. */
+.opener .bg{background:var(--grain-url),radial-gradient(ellipse 90% 70% at 50% 40%,#fbf5ee,var(--paper) 55%,#e3d0c2)}
+.stage{position:absolute;inset:0;display:grid;place-items:center;perspective:1300px;animation:float 6s ease-in-out infinite;transition:opacity .5s ease 2.15s}
+.stage::after{content:"";position:absolute;left:50%;top:50%;width:calc(var(--cw) * .9);height:2.2rem;margin:calc(var(--cw) * .72) 0 0 calc(var(--cw) * -.45);
+  border-radius:50%;background:rgba(74,20,32,.35);filter:blur(14px);transition:opacity .5s ease .5s}
+.env4{position:relative;width:var(--cw);aspect-ratio:5/7;transform-style:preserve-3d;
+  transform:rotateX(calc(14deg + var(--rx,0deg))) rotateY(var(--ry,0deg)) rotateZ(-2deg);transition:transform .35s ease-out}
+.env4>*{position:absolute;inset:0}
+.e-card{border-radius:.12rem;background:var(--grain-url),linear-gradient(180deg,#fffaf2,#f5eadc);
+  box-shadow:inset 0 0 0 1px #c9a86a,inset 0 0 0 .4rem #fffaf2,inset 0 0 0 calc(.4rem + 1px) #e2cfa6,0 1.4rem 2.2rem -1rem rgba(74,20,32,.6);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;text-align:center;color:var(--ink)}
+.e-card small{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft)}
+.e-card b{font-family:var(--display);font-weight:400;font-size:calc(var(--cw) * .115);line-height:1.2}
+.e-card b i{font-style:normal;font-size:.6em;color:var(--accent)}
+.e-card span{font-size:.85rem;letter-spacing:.2em}
+.fp{transform-style:preserve-3d;transition:transform 1s cubic-bezier(.5,.05,.3,1)}
+.fp>*{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fp .in{background:repeating-linear-gradient(45deg,#e6cc98 0 6px,#d3b473 6px 7px)}
+.rel{position:absolute;inset:0;width:100%;height:100%}
+.fp.l{transform-origin:0 50%;transform:translateZ(2px);transition-delay:.8s}
+.fp.r{transform-origin:100% 50%;transform:translateZ(2px);transition-delay:.8s}
+.fp.b{transform-origin:50% 100%;transform:translateZ(3px);transition-delay:.55s}
+.fp.t{transform-origin:50% 0;transform:translateZ(4px);transition-delay:.3s}
+.fp.l .out{clip-path:polygon(0 0,50.5% 50%,0 100%);background:linear-gradient(90deg,var(--env-lo),var(--env) 80%)}
+.fp.r .out{clip-path:polygon(100% 0,49.5% 50%,100% 100%);background:linear-gradient(270deg,var(--env-lo),var(--env) 80%)}
+.fp.b .out{clip-path:polygon(0 100%,50% 49.5%,100% 100%);background:linear-gradient(0deg,var(--env),var(--env-hi))}
+.fp.t .out{clip-path:polygon(0 0,100% 0,50% 50.5%);background:linear-gradient(180deg,var(--env-hi),var(--env) 70%,var(--env-lo))}
+.fp.l .in{clip-path:polygon(100% 0,49.5% 50%,100% 100%);transform:rotateY(180deg)}
+.fp.r .in{clip-path:polygon(0 0,50.5% 50%,0 100%);transform:rotateY(180deg)}
+.fp.b .in{clip-path:polygon(0 0,50% 50.5%,100% 0);transform:rotateX(180deg)}
+.fp.t .in{clip-path:polygon(0 100%,100% 100%,50% 49.5%);transform:rotateX(180deg)}
+.seal{inset:auto;left:50%;top:50%;width:5.2rem;height:5.2rem;margin:-2.6rem 0 0 -2.6rem;transform:translateZ(7px);filter:drop-shadow(0 4px 5px rgba(30,0,8,.55))}
+.half{position:absolute;inset:0;transition:transform .7s cubic-bezier(.3,.7,.3,1),opacity .55s ease .15s}
+.half.a{clip-path:polygon(0 0,54% 0,47% 18%,55% 34%,46% 52%,54% 70%,47% 86%,52% 100%,0 100%)}
+.half.b{clip-path:polygon(54% 0,100% 0,100% 100%,52% 100%,47% 86%,54% 70%,46% 52%,55% 34%,47% 18%)}
+.wax{position:absolute;inset:0;border-radius:49% 51% 50% 50% / 52% 48% 52% 48%;
+  background:radial-gradient(circle at 34% 28%,var(--seal-hi),transparent 46%),radial-gradient(circle at 70% 78%,var(--seal-lo),transparent 55%),var(--seal);
+  box-shadow:inset 0 0 0 .36rem var(--seal),inset .1rem .12rem .18rem .36rem var(--seal-lo),inset -.08rem -.1rem .18rem .4rem var(--seal-hi);
+  display:grid;place-items:center;font-family:var(--display);font-size:1.45rem;letter-spacing:.04em;line-height:1;color:var(--seal);
+  text-shadow:1px 1.4px .5px #8a6426,-1px -1px .5px var(--seal-hi)}
+.hint{top:calc(50% + var(--cw) * .7 + 2.6rem);color:var(--ink);opacity:.8}
+@keyframes float{50%{transform:translateY(-.45rem)}}
+.open .stage::after{opacity:0}
+.open .half.a{transform:translate(-1.7rem,1.1rem) rotate(-16deg);opacity:0}
+.open .half.b{transform:translate(1.7rem,1.1rem) rotate(16deg);opacity:0}
+.open .fp.t{transform:translateZ(4px) rotateX(168deg)}
+.open .fp.b{transform:translateZ(3px) rotateX(-168deg)}
+.open .fp.l{transform:translateZ(2px) rotateY(-168deg)}
+.open .fp.r{transform:translateZ(2px) rotateY(168deg)}
+.open .env4{transform:scale(2.1) rotateX(0deg);transition:transform .85s cubic-bezier(.6,0,.8,.4) 1.85s}
+.open .stage{opacity:0}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="rall"><g id="rq"><path d="M1 10Q14 24 22 52" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(5.5 15.5) rotate(4) scale(0.46)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(8.3 19.6) rotate(108) scale(0.44)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(10.9 24.0) rotate(11) scale(0.42)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(13.4 28.8) rotate(114) scale(0.39)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(15.8 34.0) rotate(17) scale(0.37)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(18.0 39.6) rotate(120) scale(0.35)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(20.1 45.6) rotate(22) scale(0.32)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(22.0 52.0) rotate(124) scale(0.30)" fill="currentColor"/><path d="M8 1Q26 10 46 16" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(14.5 4.1) rotate(-25) scale(0.46)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(18.9 6.1) rotate(74) scale(0.44)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(23.3 7.9) rotate(-28) scale(0.42)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(27.7 9.7) rotate(71) scale(0.39)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(32.2 11.4) rotate(-30) scale(0.37)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(36.7 13.0) rotate(69) scale(0.35)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(41.3 14.6) rotate(-32) scale(0.32)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(46.0 16.0) rotate(67) scale(0.30)" fill="currentColor"/><path d="M2 2Q16 14 34 34" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(10.8 9.9) rotate(-7) scale(0.44)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(14.4 13.4) rotate(94) scale(0.42)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(18.1 17.1) rotate(-5) scale(0.39)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(21.9 21.0) rotate(96) scale(0.37)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(25.8 25.1) rotate(-3) scale(0.35)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(29.9 29.4) rotate(97) scale(0.32)" fill="currentColor"/><path d="M0 0C5-7 17-8 25 0 17 7 5 6 0 0Z" transform="translate(34.0 34.0) rotate(-2) scale(0.30)" fill="currentColor"/><ellipse cx="11.0" cy="7.0" rx="3.38" ry="2.34" transform="rotate(-90 11.0 7.0)" fill="currentColor"/><ellipse cx="14.8" cy="9.8" rx="3.38" ry="2.34" transform="rotate(-18 14.8 9.8)" fill="currentColor"/><ellipse cx="13.4" cy="14.3" rx="3.38" ry="2.34" transform="rotate(54 13.4 14.3)" fill="currentColor"/><ellipse cx="8.6" cy="14.3" rx="3.38" ry="2.34" transform="rotate(126 8.6 14.3)" fill="currentColor"/><ellipse cx="7.2" cy="9.8" rx="3.38" ry="2.34" transform="rotate(198 7.2 9.8)" fill="currentColor"/><ellipse cx="30.0" cy="25.4" rx="2.18" ry="1.51" transform="rotate(-90 30.0 25.4)" fill="currentColor"/><ellipse cx="32.5" cy="27.2" rx="2.18" ry="1.51" transform="rotate(-18 32.5 27.2)" fill="currentColor"/><ellipse cx="31.5" cy="30.1" rx="2.18" ry="1.51" transform="rotate(54 31.5 30.1)" fill="currentColor"/><ellipse cx="28.5" cy="30.1" rx="2.18" ry="1.51" transform="rotate(126 28.5 30.1)" fill="currentColor"/><ellipse cx="27.5" cy="27.2" rx="2.18" ry="1.51" transform="rotate(198 27.5 27.2)" fill="currentColor"/><ellipse cx="7.0" cy="31.9" rx="1.77" ry="1.22" transform="rotate(-90 7.0 31.9)" fill="currentColor"/><ellipse cx="9.0" cy="33.4" rx="1.77" ry="1.22" transform="rotate(-18 9.0 33.4)" fill="currentColor"/><ellipse cx="8.2" cy="35.7" rx="1.77" ry="1.22" transform="rotate(54 8.2 35.7)" fill="currentColor"/><ellipse cx="5.8" cy="35.7" rx="1.77" ry="1.22" transform="rotate(126 5.8 35.7)" fill="currentColor"/><ellipse cx="5.0" cy="33.3" rx="1.77" ry="1.22" transform="rotate(198 5.0 33.3)" fill="currentColor"/><ellipse cx="36.0" cy="5.9" rx="1.77" ry="1.22" transform="rotate(-90 36.0 5.9)" fill="currentColor"/><ellipse cx="38.0" cy="7.4" rx="1.77" ry="1.22" transform="rotate(-18 38.0 7.4)" fill="currentColor"/><ellipse cx="37.2" cy="9.7" rx="1.77" ry="1.22" transform="rotate(54 37.2 9.7)" fill="currentColor"/><ellipse cx="34.8" cy="9.7" rx="1.77" ry="1.22" transform="rotate(126 34.8 9.7)" fill="currentColor"/><ellipse cx="34.0" cy="7.3" rx="1.77" ry="1.22" transform="rotate(198 34.0 7.3)" fill="currentColor"/></g><use href="#rq" transform="translate(100 0) scale(-1 1)"/><use href="#rq" transform="translate(0 140) scale(1 -1)"/><use href="#rq" transform="translate(100 140) scale(-1 -1)"/></g><symbol id="relief" viewBox="0 0 100 140" preserveAspectRatio="none"><use href="#rall" transform="translate(.5 .6)" color="rgba(30,0,8,.6)"/><use href="#rall" transform="translate(-.4 -.5)" color="rgba(255,200,208,.3)"/><use href="#rall" color="#6b1829"/></symbol></defs></svg>
+<div class="opener" id="opener" data-ms="2750" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="bg"></div>
+  <div class="stage">
+    <div class="env4" data-tilt>
+      <div class="e-card"><small>Приглашение на свадьбу</small><b>София<br><i>и</i><br>Марк</b><span>09 · 10 · 2027</span></div>
+      <div class="fp l"><div class="out"><svg class="rel" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true"><use href="#relief"/></svg></div><div class="in"></div></div>
+      <div class="fp r"><div class="out"><svg class="rel" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true"><use href="#relief"/></svg></div><div class="in"></div></div>
+      <div class="fp b"><div class="out"><svg class="rel" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true"><use href="#relief"/></svg></div><div class="in"></div></div>
+      <div class="fp t"><div class="out"><svg class="rel" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true"><use href="#relief"/></svg></div><div class="in"></div></div>
+      <div class="seal">
+        <span class="half a"><span class="wax">С М</span></span>
+        <span class="half b"><span class="wax">С М</span></span>
+      </div>
+    </div>
+  </div>
+  <div class="hint">Нажмите на печать</div>
+</div>
+<main class="letter" id="letter"></main>
+<script>
+/* Календарь месяца свадьбы с отмеченным днём: строится из даты, чтобы не править вручную. */
+function calendar(iso) {
+  const d = new Date(iso), y = d.getFullYear(), m = d.getMonth(), day = d.getDate();
+  const first = (new Date(y, m, 1).getDay() + 6) % 7, days = new Date(y, m + 1, 0).getDate();
+  const name = new Date(y, m, 1).toLocaleDateString('ru-RU', {month: 'long'});
+  const heart = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28C6 20 2 15 2 10a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 5-4 10-14 18Z"/></svg>';
+  let h = '<div class="cal" role="img" aria-label="Календарь: ' + day + ' число отмечено"><strong>' + name[0].toUpperCase() + name.slice(1) + ' ' + y + '</strong>' +
+    ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'].map(w => '<em>' + w + '</em>').join('') + '<span></span>'.repeat(first);
+  for (let i = 1; i <= days; i++) h += i === day ? '<span class="on">' + heart + i + '</span>' : '<span>' + i + '</span>';
+  return h + '</div>';
+}
+const DATE = '2027-10-09T15:30:00+03:00';
+window.INVITE = {
+  names: ['София', 'Марк'], joiner: 'и',
+  date: DATE, dateFormat: 'long',
+  art: 'html', artHtml: calendar(DATE),
+  lead: 'Дорогие родные и друзья! Мы решили, что этой осенью станем семьёй, и приглашаем вас быть с нами в этот день.',
+  titles: {count: 'До свадьбы', place: 'Место', plan: 'Программа дня', dress: 'Дресс-код'},
+  venues: [
+    {kind: 'ceremony', title: 'Церемония', time: '15:30', place: 'Оранжерея', address: 'Адрес сообщим позже'},
+    {title: 'Банкет', time: '17:30', place: 'Каминный зал', address: 'Там же, вход со двора'}
+  ],
+  plan: [['15:00', 'Сбор гостей'], ['15:30', 'Церемония'], ['16:30', 'Фуршет и фотографии'], ['17:30', 'Банкет'], ['20:30', 'Торт'], ['21:30', 'Танцы']],
+  dress: 'Будем рады оттенкам вина, пыльной розы и сливок. Мужчинам подойдут тёмные костюмы.',
+  swatches: ['#5e1424', '#8c1c2e', '#c98a8f', '#e9d6c4', '#3a3a34'],
+  bye: 'С любовью и нетерпением ждём встречи.'
+};
+</script>
+<script src="../assets/engine.js"></script>
+</body>
+</html>

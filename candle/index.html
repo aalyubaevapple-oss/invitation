@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b120d">
+<title>Свечи · Диана и Кирилл</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Диана и Кирилл приглашают на свадьбу">
+<meta property="og:description" content="6 ноября 2027 года. Зажгите свечи.">
+<meta property="og:url" content="https://aalyubaevapple-oss.github.io/invitation/candle/">
+<meta property="og:image" content="https://aalyubaevapple-oss.github.io/invitation/og/candle.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Forum&display=swap">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+/* Тёмная зелень и шампань: три свечи в латунных подсвечниках, приглашение проступает в их свете. */
+:root{
+  color-scheme:dark;
+  --paper:#18241b; --ink:#efe3c8; --ink-soft:#a9a184; --line:#55604a; --accent:#c9a86a; --card:#213226;
+  --display:"Forum","Cormorant Garamond",Georgia,serif;
+  --body:"Cormorant Garamond","Cormorant",Georgia,serif;
+  --h1-size:clamp(2.7rem,13vw,3.6rem); --h2-size:1.7rem; --h-transform:uppercase; --h-spacing:.07em; --h-lh:1.12; --fs-body:1.18rem;
+  --num-font:var(--display); --num-style:normal; --num-size:2.1rem;
+  --h3-font:var(--display); --h3-style:normal;
+  --pill-bg:var(--accent); --pill-fg:#18241b;
+  --btn-line:var(--accent); --btn-fg:var(--accent);
+  --card-shadow:inset 0 0 0 1px var(--line);
+  --w-sky:#213226; --w-leaf1:#2b3d2f; --w-leaf2:#101a13; --w-water:#213226; --w-bloom:#f0d79a; --w-reed:#c9a86a;
+  --brass:linear-gradient(90deg,#6f5626,#e6cd8c 38%,#b9954c 62%,#5e4a20);
+  --bg-delay:2.05s;
+}
+.btn:hover{color:#18241b}
+h1 span:not(.amp){background:linear-gradient(180deg,#f6e7bb,#c09a52);-webkit-background-clip:text;background-clip:text;color:transparent}
+.venue canvas{-webkit-mask-image:linear-gradient(180deg,transparent,#000 18%,#000 80%,transparent);mask-image:linear-gradient(180deg,transparent,#000 18%,#000 80%,transparent)}
+/* Свеча: пламя, фитиль, воск, чаша, ножка и основание. Незажжённая свеча в тени, зажжённая светится. */
+.candles{display:flex;align-items:flex-end;justify-content:center;gap:1.9rem}
+.cd{display:flex;flex-direction:column;align-items:center;filter:brightness(.3) saturate(.6);transition:filter 1.2s ease}
+.cd i{display:block}
+.fl{width:1.05rem;height:2.3rem;margin-bottom:-.12rem;border-radius:50% 50% 50% 50% / 64% 64% 36% 36%;
+  background:radial-gradient(ellipse 60% 55% at 50% 78%,#fff 0 22%,#ffe9a8 42%,#ffb347 66%,rgba(255,150,50,.6) 100%);
+  box-shadow:0 0 1.8rem .55rem rgba(255,190,90,.4),0 0 5rem 1.6rem rgba(255,170,70,.18);
+  transform-origin:50% 100%;transform:scale(0);opacity:0;transition:transform .55s cubic-bezier(.3,1.7,.5,1),opacity .25s ease}
+.wick{width:2px;height:.4rem;background:#2a2118}
+.wax{width:1.45rem;height:var(--h);border-radius:.22rem .22rem 0 0;
+  background:linear-gradient(180deg,rgba(255,206,130,.85),transparent 2.2rem),linear-gradient(90deg,#8f8468,#f4ead0 38%,#d9cdac 62%,#857a5e)}
+.cup{width:2.9rem;height:.75rem;border-radius:.1rem .1rem 1.45rem 1.45rem;background:var(--brass)}
+.stem{width:.5rem;height:var(--s);background:var(--brass)}
+.base{width:3.3rem;height:.55rem;border-radius:1.65rem 1.65rem .1rem .1rem;background:var(--brass)}
+.candles.lit .cd,.open .cd{filter:none}
+.candles.lit .fl,.open .fl{transform:scale(1);opacity:1;animation:flick 2.6s ease-in-out infinite}
+.cd:nth-child(2) .fl{animation-delay:-.9s}
+.cd:nth-child(3) .fl{animation-delay:-1.7s}
+@keyframes flick{0%,100%{transform:scale(1) rotate(-1.5deg)}30%{transform:scale(.96,1.07) rotate(1.5deg)}60%{transform:scale(1.03,.95) rotate(-.5deg)}80%{transform:scale(.98,1.04) rotate(2deg)}}
+.cover .candles{margin-block:.6rem .4rem;transform:scale(.8);transform-origin:50% 100%}
+/* Экран открытия: тёмная комната, стол, свечи и имена, которые проступают в свете. */
+.opener .bg{background:#0b120d}
+.room{position:absolute;inset:0;transition:transform 1s cubic-bezier(.6,0,.7,.3) 1.9s,opacity .7s ease 2.1s}
+.halo{position:absolute;left:50%;bottom:calc(24% + 6rem);width:40rem;height:40rem;margin:0 0 -20rem -20rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,200,120,.42),rgba(201,168,106,.16) 34%,transparent 66%);
+  opacity:0;transform:scale(.5);transition:opacity 1.3s ease .3s,transform 1.6s cubic-bezier(.2,.7,.3,1) .3s}
+.table{position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(180deg,#141f17,#0b120d);box-shadow:inset 0 1px 0 rgba(201,168,106,.14)}
+.table::before{content:"";position:absolute;left:50%;top:0;width:24rem;height:5rem;margin-left:-12rem;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,200,120,.3),transparent 68%);transform:translateY(-35%);opacity:0;transition:opacity 1.3s ease .5s}
+.room .candles{position:absolute;left:0;right:0;bottom:calc(24% - .3rem)}
+.room .cd:nth-child(1) .fl{transition-delay:.1s}
+.room .cd:nth-child(2) .fl{transition-delay:.4s}
+.room .cd:nth-child(3) .fl{transition-delay:.7s}
+.room .cd:nth-child(1){transition-delay:.1s}
+.room .cd:nth-child(2){transition-delay:.4s}
+.room .cd:nth-child(3){transition-delay:.7s}
+.title{position:absolute;left:0;right:0;top:max(2.5rem,calc(38% - 13rem));display:flex;flex-direction:column;align-items:center;gap:.8rem;text-align:center;padding-inline:1.5rem;
+  color:#1a281e;transition:color 1.5s ease .55s,text-shadow 1.5s ease .55s}
+.title small{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase}
+.title b{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,11vw,3.2rem);line-height:1.1;letter-spacing:.07em;text-transform:uppercase}
+.title b i{font-style:normal;font-size:.55em;text-transform:none}
+.title span{font-size:1rem;letter-spacing:.24em}
+.hint{bottom:calc(1.8rem + env(safe-area-inset-bottom,0px));color:var(--accent)}
+.open .halo{opacity:1;transform:scale(1)}
+.open .table::before{opacity:1}
+.open .title{color:#ecdcb0;text-shadow:0 0 1.6rem rgba(255,200,120,.45)}
+.open .room{transform:translateY(-16%);opacity:0}
+@media (prefers-reduced-motion:reduce){.fl{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="opener" id="opener" data-ms="2900" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="bg"></div>
+  <div class="room">
+    <div class="halo"></div>
+    <div class="table"></div>
+    <div class="title"><small>Приглашение на свадьбу</small><b>Диана<br><i>и</i><br>Кирилл</b><span>06 · 11 · 2027</span></div>
+    <div class="candles"><div class="cd" style="--h:6.2rem;--s:1.6rem"><i class="fl"></i><i class="wick"></i><i class="wax"></i><i class="cup"></i><i class="stem"></i><i class="base"></i></div><div class="cd" style="--h:8.6rem;--s:3rem"><i class="fl"></i><i class="wick"></i><i class="wax"></i><i class="cup"></i><i class="stem"></i><i class="base"></i></div><div class="cd" style="--h:5.2rem;--s:0.9rem"><i class="fl"></i><i class="wick"></i><i class="wax"></i><i class="cup"></i><i class="stem"></i><i class="base"></i></div></div>
+  </div>
+  <div class="hint">Зажгите свечи</div>
+</div>
+<main class="letter" id="letter"></main>
+<script>
+window.INVITE = {
+  names: ['Диана', 'Кирилл'], joiner: 'и',
+  date: '2027-11-06T17:00:00+03:00', dateFormat: 'long',
+  art: 'html', artHtml: '<div class="candles lit" role="img" aria-label="Три горящие свечи в латунных подсвечниках">' + '<div class="cd" style="--h:6.2rem;--s:1.6rem"><i class="fl"></i><i class="wick"></i><i class="wax"></i><i class="cup"></i><i class="stem"></i><i class="base"></i></div><div class="cd" style="--h:8.6rem;--s:3rem"><i class="fl"></i><i class="wick"></i><i class="wax"></i><i class="cup"></i><i class="stem"></i><i class="base"></i></div><div class="cd" style="--h:5.2rem;--s:0.9rem"><i class="fl"></i><i class="wick"></i><i class="wax"></i><i class="cup"></i><i class="stem"></i><i class="base"></i></div>' + '</div>',
+  lead: 'Приглашаем вас на ужин при свечах в честь нашей свадьбы. Будет тепло, негромко и очень красиво.',
+  titles: {count: 'До вечера', place: 'Место', plan: 'Программа вечера', dress: 'Дресс-код'},
+  venues: [
+    {title: 'Церемония', time: '17:00', place: 'Зимняя оранжерея', address: 'Адрес сообщим позже'},
+    {kind: 'night', title: 'Ужин при свечах', time: '18:30', place: 'Зал с камином', address: 'Там же, через внутренний двор'}
+  ],
+  plan: [['16:30', 'Сбор гостей'], ['17:00', 'Церемония'], ['18:00', 'Аперитив'], ['18:30', 'Ужин при свечах'], ['21:00', 'Первый танец'], ['22:00', 'Торт и десерты']],
+  dress: 'Вечерний. Изумруд, тёмная зелень, шампань, чёрный. Немного золота будет кстати.',
+  swatches: ['#18241b', '#2f4a36', '#6f7f5a', '#c9a86a', '#efe3c8'],
+  bye: 'Будем счастливы провести этот вечер с вами.'
+};
+</script>
+<script src="../assets/engine.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@ node --check assets/engine.js || exit 1
 T=$(mktemp -d); cp -r . "$T/site"; fail=0
 probe='<script>addEventListener("error",function(e){document.documentElement.dataset.err=(document.documentElement.dataset.err||"")+e.message+"; "});</script>'
 measure='<script>setTimeout(function(){var o=document.getElementById("opener"),r=document.documentElement,a=r.scrollWidth-r.clientWidth;if(o){o.hidden=true;r.classList.remove("locked");document.getElementById("letter").classList.add("entered")}var b=r.scrollWidth-r.clientWidth;r.dataset.res="closed="+a+" open="+b+" sections="+document.querySelectorAll("section").length},400)</script>'
-for page in "" pudra/ garden/ mono/ evening/ ticket/ kraft/ finally/; do
+for page in "" pudra/ garden/ mono/ evening/ ticket/ kraft/ finally/ bordo/ candle/; do
   f="$T/site/${page}index.html"
   python3 - "$f" "$probe" "$measure" <<'PY'
 import sys
