@@ -22,6 +22,18 @@
       </svg>`
     : `<canvas class="scene" width="760" height="470" data-kind="${I.art}" data-seed="${I.seed || 11}" role="img" aria-label="${I.artLabel || 'Иллюстрация'}"></canvas>`;
 
+  /* ---------- календарь ---------- */
+  const z = n => String(n).padStart(2, '0');
+  const stamp = d => d.getUTCFullYear() + z(d.getUTCMonth() + 1) + z(d.getUTCDate()) + 'T' + z(d.getUTCHours()) + z(d.getUTCMinutes()) + '00Z';
+  const esc = t => String(t).replace(/[\\;,]/g, '\\$&');
+  const couple = I.names.join(' ' + (I.joiner || 'и') + ' ');
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//wedding-invitation//RU', 'BEGIN:VEVENT',
+    'UID:' + when.getTime() + '@wedding-invitation', 'DTSTAMP:' + stamp(new Date()),
+    'DTSTART:' + stamp(when), 'DTEND:' + stamp(new Date(when.getTime() + (I.hours || 7) * 36e5)),
+    'SUMMARY:' + esc('Свадьба: ' + couple), 'LOCATION:' + esc(I.location || I.venues[0].place),
+    'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+  const icsHref = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+
   const letter = $('letter');
   if (I.left) letter.classList.add('left');
   letter.innerHTML = `
@@ -39,6 +51,7 @@
         <div><b id="cd">0</b><span id="cdl">дней</span></div><div><b id="ch">0</b><span id="chl">часов</span></div>
         <div><b id="cm">0</b><span id="cml">минут</span></div><div><b id="cs">0</b><span id="csl">секунд</span></div>
       </div>
+      <a class="btn" href="${icsHref}" download="wedding.ics">Добавить в календарь</a>
     </section>
     <section class="rv">
       <h2>${T.place}</h2>
@@ -48,6 +61,7 @@
           <h3>${v.title}</h3>
           <div class="when">${v.time} · ${v.place}</div>
           <div class="addr">${v.address}</div>
+          ${v.mapUrl ? `<a class="btn sm" href="${v.mapUrl}" target="_blank" rel="noopener">Маршрут</a>` : ''}
         </div>`).join('')}</div>
     </section>
     <section class="rv">
@@ -61,7 +75,7 @@
       </div>
     </section>
     <section class="rv">${rule}<p>${I.bye}</p>
-      <div class="sign">${I.names.join(' ' + (I.joiner || 'и') + ' ')}</div>
+      <div class="sign">${couple}</div>
       <button class="again" id="again" type="button">Открыть заново</button>
     </section>`;
   document.body.insertAdjacentHTML('beforeend', '<a class="back" href="../">← Все приглашения</a>');
@@ -189,23 +203,35 @@
 
   /* ---------- экран открытия ---------- */
   const op = $('opener'), ms = +(op.dataset.ms || 2000);
-  let timer;
+  let timer, enter;
   root.classList.add('locked');
   function open() {
     if (op.classList.contains('open')) return;
     op.classList.add('open');
     clearTimeout(timer);
     timer = setTimeout(() => { op.hidden = true; root.classList.remove('locked'); }, ms);
+    enter = setTimeout(() => letter.classList.add('entered'), Math.max(0, ms - 550));
   }
   op.addEventListener('click', open);
   op.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   $('again').addEventListener('click', () => {
-    clearTimeout(timer);
+    clearTimeout(timer); clearTimeout(enter);
+    letter.classList.remove('entered');
     window.scrollTo(0, 0);
     root.classList.add('locked');
     op.hidden = false;
     requestAnimationFrame(() => requestAnimationFrame(() => op.classList.remove('open')));
   });
+
+  /* ---------- параллакс обложки ---------- */
+  const scene = letter.querySelector('.cover .scene, .cover .pair');
+  if (scene && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let busy = false;
+    addEventListener('scroll', () => {
+      if (busy) return; busy = true;
+      requestAnimationFrame(() => { scene.style.translate = '0 ' + (Math.min(scrollY, 700) * .14).toFixed(1) + 'px'; busy = false; });
+    }, {passive: true});
+  }
 
   /* ---------- появление блоков ---------- */
   if ('IntersectionObserver' in window) {

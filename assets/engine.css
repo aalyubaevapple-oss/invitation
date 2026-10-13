@@ -84,6 +84,23 @@ p{margin:0;max-width:24rem;text-wrap:pretty}
   font:inherit;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
 .again:focus-visible,.back:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:2.9rem;padding:.5rem 1.5rem;
+  border:1px solid var(--btn-line,var(--ink));border-radius:var(--btn-radius,999px);background:var(--btn-bg,transparent);color:var(--btn-fg,var(--ink));
+  font-family:var(--btn-font,inherit);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;line-height:1.2;
+  transition:background .25s ease,color .25s ease,transform .15s ease}
+.btn.sm{min-height:2.75rem;margin-top:.35rem}
+.btn:hover{background:var(--btn-fg,var(--ink));color:var(--paper)}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* обложка собирается по строкам после открытия */
+.cover>*{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.cover>:nth-child(2){transition-delay:.12s}
+.cover>:nth-child(3){transition-delay:.26s}
+.cover>:nth-child(4){transition-delay:.4s}
+.cover>:nth-child(n+5){transition-delay:.52s}
+.letter:not(.entered) .cover>*{opacity:0;transform:translateY(1.3rem)}
+
 .back{position:fixed;z-index:10;left:.75rem;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));
   padding:.45rem .9rem;border-radius:999px;background:var(--card);color:var(--ink);text-decoration:none;
   font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 2px 10px rgba(0,0,0,.25)}
@@ -109,5 +126,7 @@ p{margin:0;max-width:24rem;text-wrap:pretty}
 @media (prefers-reduced-motion:reduce){
   .opener,.opener *{transition-duration:.01s!important;transition-delay:0s!important;animation:none!important}
   .rv{opacity:1;transform:none;transition:none}
+  .cover>*{transition:none}
+  .letter:not(.entered) .cover>*{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }

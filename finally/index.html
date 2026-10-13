@@ -6,13 +6,20 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#fff6e0">
 <title>Наконец-то · Соня и Даня</title>
+<meta property="og:type" content="website">
 <meta property="og:title" content="Соня и Даня женятся. Наконец-то!">
-<meta property="og:description" content="Приглашение на свадьбу 24 июля 2027 года">
+<meta property="og:description" content="24 июля 2027 года. Нажмите на сердце.">
+<meta property="og:url" content="https://aalyubaevapple-oss.github.io/invitation/finally/">
+<meta property="og:image" content="https://aalyubaevapple-oss.github.io/invitation/og/finally.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600&family=Pangolin&display=swap">
 <link rel="stylesheet" href="../assets/engine.css">
 <style>
 /* Детские фото-наклейки, сердце на ниточке и рукописные буквы: приглашение с улыбкой. */
 :root{
+  --btn-line:var(--accent);--btn-bg:var(--accent);--btn-fg:#fff6e0;
   --paper:#fff6e0; --ink:#2a2622; --ink-soft:#7d7264; --line:#e7d6b4; --accent:#cf2459; --accent-2:#2f4fa8; --card:#fffdf6;
   --display:"Pangolin","Caveat",cursive;
   --hand:"Caveat","Pangolin",cursive;
@@ -41,6 +48,7 @@ h1 .amp{color:var(--ink);font-family:var(--hand)}
 .pair svg{width:46%;height:auto;overflow:visible}
 .pair svg:first-child{transform:rotate(-4deg);margin-right:-4%}
 .pair svg:last-child{transform:rotate(3deg)}
+.btn:hover{background:var(--ink);border-color:var(--ink);color:#fff6e0}
 .cap2{font-family:var(--hand);font-size:1.3rem;color:var(--ink-soft);margin-top:-.4rem}
 
 /* экран открытия */
@@ -53,7 +61,7 @@ h1 .amp{color:var(--ink);font-family:var(--hand)}
 .heart svg{width:100%;height:100%;fill:var(--accent);display:block}
 .word{position:absolute;left:0;right:0;top:30%;text-align:center;font-family:var(--display);font-size:clamp(2.6rem,13vw,3.4rem);color:var(--ink);line-height:1}
 .hint{top:calc(30% + 4.6rem);font-family:var(--hand);font-size:1.25rem;letter-spacing:.02em;text-transform:none;color:var(--ink-soft)}
-.opener .pair{position:absolute;left:0;bottom:3rem;margin:0;padding-inline:.5rem}
+.opener .pair{position:absolute;left:50%;bottom:3rem;margin:0 0 0 calc(min(100%,27rem) / -2);width:min(100%,27rem);padding-inline:.5rem}
 .opener .pair svg{animation:pop .7s cubic-bezier(.3,1.5,.5,1) both}
 .opener .pair svg:last-child{animation-delay:.15s}
 .tape{position:absolute;left:0;right:0;bottom:0;height:3.2rem;background:var(--accent);color:var(--paper);overflow:hidden;
