@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#111111">
+<title>Минимализм · Саша и Ника</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Unbounded:wght@400;700&display=swap">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+/* Чёрное и белое, крупный гротеск, выключка влево. Открывается шторкой. */
+:root{
+  --paper:#f5f5f2; --ink:#111111; --ink-soft:#6b6b66; --line:#111111; --accent:#e4572e; --card:#111111;
+  --display:"Unbounded","Arial Black",sans-serif;
+  --body:"Jost","Helvetica Neue",Arial,sans-serif;
+  --h1-size:clamp(2.7rem,13.5vw,3.7rem); --h2-size:1.25rem; --h-weight:700; --h-transform:uppercase; --h-lh:1.02; --h-spacing:-.01em;
+  --fs-body:1.08rem; --label-spacing:.18em; --gap:4rem;
+  --date-font:var(--display); --date-size:clamp(1.5rem,7.6vw,2.1rem); --date-weight:700; --date-spacing:0;
+  --num-font:var(--display); --num-style:normal; --num-weight:700; --num-size:1.5rem;
+  --h3-font:var(--body); --h3-style:normal; --h3-weight:500;
+  --pill-radius:0; --sw-radius:0; --sign-size:1.4rem;
+}
+.dress,.back{color:var(--paper)}
+.rule i{display:none}
+.rule::after{border-top-width:3px}
+.curtain{position:absolute;inset:0;background:var(--ink);color:var(--paper);
+  display:flex;flex-direction:column;justify-content:space-between;padding:2rem 1.5rem calc(2rem + env(safe-area-inset-bottom,0px));
+  transition:transform .95s cubic-bezier(.75,0,.2,1)}
+.curtain .top{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;display:flex;justify-content:space-between}
+.curtain b{font-family:var(--display);font-weight:700;font-size:clamp(5.5rem,31vw,10rem);line-height:.86;letter-spacing:-.04em}
+.curtain b i{font-style:normal;color:var(--accent)}
+.curtain .go{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;display:flex;justify-content:space-between;border-top:1px solid var(--paper);padding-top:.9rem}
+.curtain .go span:last-child{animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(-.35rem)}}
+.open .curtain{transform:translateY(-101%)}
+</style>
+</head>
+<body>
+<div class="opener" id="opener" data-ms="1000" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="curtain">
+    <div class="top"><span>Свадьба</span><span>04.09.27</span></div>
+    <b>С<i>&amp;</i><br>Н</b>
+    <div class="go"><span>Нажмите, чтобы открыть</span><span>↑</span></div>
+  </div>
+</div>
+<main class="letter" id="letter"></main>
+<script>
+window.INVITE = {
+  names: ['Саша', 'Ника'], joiner: '&', left: true,
+  date: '2027-09-04T17:00:00+03:00', dateSep: '.',
+  art: 'none',
+  eyebrow: 'Мы женимся',
+  lead: 'Без длинных тостов и лишних слов. Хорошая еда, музыка и люди, которых мы любим. Приходите.',
+  titles: {count: 'Осталось', place: 'Где', plan: 'Тайминг', dress: 'Дресс-код'},
+  venues: [
+    {title: 'Регистрация', time: '17:00', place: 'Лофт, второй этаж', address: 'Адрес сообщим позже'},
+    {title: 'Ужин и вечеринка', time: '18:30', place: 'Тот же лофт, терраса', address: 'Вход со двора'}
+  ],
+  plan: [['16:30', 'Сбор гостей'], ['17:00', 'Регистрация'], ['17:30', 'Игристое на террасе'], ['18:30', 'Ужин'], ['21:00', 'Торт'], ['21:30', 'Диджей до полуночи']],
+  dress: 'Чёрное, белое и один яркий акцент. Кроссовки приветствуются.',
+  swatches: ['#f5f5f2', '#bdbdb8', '#6b6b66', '#e4572e'],
+  bye: 'До встречи.'
+};
+</script>
+<script src="../assets/engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#10182b">
+<title>Вечер · Ева и Артём</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Tenor+Sans&display=swap">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+/* Тёмно-синий зал и латунь: распашные двери, огни гирлянд, курсивная антиква. */
+:root{
+  color-scheme:dark;
+  --paper:#10182b; --ink:#efe6d2; --ink-soft:#a69d86; --line:#6d5f3c; --accent:#d2ab5f; --card:#18223b;
+  --display:"Playfair Display",Georgia,serif;
+  --body:"Tenor Sans","Trebuchet MS",sans-serif;
+  --h1-size:clamp(3rem,15vw,4rem); --h2-size:2rem; --h-style:italic; --fs-body:1rem;
+  --num-font:var(--display); --num-style:italic; --num-size:2.2rem;
+  --h3-font:var(--display);
+  --pill-bg:var(--accent); --pill-fg:#10182b;
+  --card-shadow:inset 0 0 0 1px var(--line);
+  --w-sky:#18223b; --w-leaf1:#1f2c4a; --w-leaf2:#0a1020; --w-water:#18223b; --w-bloom:#f0cf8a; --w-reed:#d2ab5f;
+  --door-1:#16203a; --door-2:#0c1324;
+  --bg-delay:.5s;
+}
+h1 span:not(.amp){background:linear-gradient(180deg,#f3dfae,#c39a4e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.scene,.venue canvas{-webkit-mask-image:linear-gradient(180deg,transparent,#000 18%,#000 80%,transparent);mask-image:linear-gradient(180deg,transparent,#000 18%,#000 80%,transparent)}
+.door{position:absolute;top:0;bottom:0;width:50.2%;transition:transform 1.3s cubic-bezier(.6,.05,.3,1) .3s}
+.door.l{left:0;transform-origin:0 50%;background:linear-gradient(90deg,var(--door-2),var(--door-1))}
+.door.r{right:0;transform-origin:100% 50%;background:linear-gradient(270deg,var(--door-2),var(--door-1))}
+.door::before{content:"";position:absolute;inset:1.4rem 1rem;border:1px solid var(--accent);box-shadow:inset 0 0 0 .45rem var(--door-1),inset 0 0 0 calc(.45rem + 1px) var(--line)}
+.door.l::before{border-radius:7rem 0 0 0}
+.door.r::before{border-radius:0 7rem 0 0}
+.door::after{content:"";position:absolute;top:62%;width:.5rem;height:3.2rem;border-radius:.3rem;background:linear-gradient(180deg,#f3dfae,#a57f3a)}
+.door.l::after{right:.55rem}
+.door.r::after{left:.55rem}
+.medal{position:absolute;left:50%;top:44%;width:8rem;height:8rem;margin:-4rem 0 0 -4rem;border-radius:50%;
+  background:var(--door-2);box-shadow:0 0 0 1px var(--accent),0 0 0 .4rem var(--door-2),0 0 0 calc(.4rem + 1px) var(--line),0 8px 24px rgba(0,0,0,.6);
+  display:grid;place-items:center;font-family:var(--display);font-style:italic;font-size:2.3rem;color:var(--accent);
+  transition:transform .45s ease,opacity .4s ease}
+.hint{top:calc(44% + 5.6rem);color:var(--accent)}
+.hint span{background:var(--door-1);padding:.2rem .6rem}
+.open .medal{transform:scale(.7);opacity:0}
+.open .door.l{transform:rotateY(104deg)}
+.open .door.r{transform:rotateY(-104deg)}
+</style>
+</head>
+<body>
+<div class="opener" id="opener" data-ms="1700" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="bg"></div>
+  <div class="door l"></div>
+  <div class="door r"></div>
+  <div class="medal">Е · А</div>
+  <div class="hint"><span>Откройте двери</span></div>
+</div>
+<main class="letter" id="letter"></main>
+<script>
+window.INVITE = {
+  names: ['Ева', 'Артём'], joiner: 'и',
+  date: '2027-12-18T18:00:00+03:00', dateFormat: 'long',
+  art: 'night', seed: 5, artLabel: 'Ночной сад с гирляндами огней',
+  eyebrow: 'Приглашение на вечер',
+  lead: 'Приглашаем вас на наш свадебный вечер. Свечи, живая музыка и самые близкие люди за одним столом.',
+  titles: {count: 'До вечера', place: 'Место', plan: 'Программа вечера', dress: 'Дресс-код'},
+  venues: [
+    {kind: 'night', title: 'Церемония', time: '18:00', place: 'Зимний сад', address: 'Адрес сообщим позже'},
+    {title: 'Ужин', time: '19:00', place: 'Большой зал', address: 'Там же, вход через галерею'}
+  ],
+  plan: [['17:30', 'Сбор гостей'], ['18:00', 'Церемония при свечах'], ['19:00', 'Ужин'], ['21:00', 'Первый танец'], ['22:00', 'Торт'], ['23:30', 'Бенгальские огни']],
+  dress: 'Black tie optional. Вечерние платья в пол, тёмные костюмы. Глубокие цвета и немного золота.',
+  swatches: ['#10182b', '#2d3f66', '#5b1f2e', '#d2ab5f', '#efe6d2'],
+  bye: 'Будем счастливы видеть вас среди наших гостей.'
+};
+</script>
+<script src="../assets/engine.js"></script>
+</body>
+</html>

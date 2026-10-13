@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#e6c4cb">
+<title>Пудра · Анна и Михаил</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&family=Great+Vibes&display=swap">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+/* Пудровый конверт с сургучной печатью: каллиграфия, тонкие линейки, акварельный берег. */
+:root{
+  --paper:#f4dfe3; --ink:#4b3340; --ink-soft:#8a6b78; --line:#d3a9b6; --accent:#b0607a; --card:#f9ebe6;
+  --grain:var(--grain-url);
+  --display:"Great Vibes","Marck Script","Snell Roundhand",cursive;
+  --body:"Cormorant","Cormorant Garamond",Georgia,serif;
+  --h1-size:clamp(3.4rem,17vw,4.6rem); --h2-size:2.7rem; --fs-body:1.16rem;
+  --card-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(60,30,40,.5);
+  --env-1:#e6c4cb; --env-2:#efd3d8; --env-3:#d9b1bb;
+  --seal:#ecc9a2; --seal-hi:#fbe6c9; --seal-lo:#c99a6b;
+  --w-sky:#f3c9cf; --w-leaf1:#9bb38a; --w-leaf2:#6f8f6c; --w-water:#b9cfd6; --w-bloom:#e58fa6; --w-reed:#5e6f4c;
+  --bg-delay:1.05s;
+}
+.fw{position:absolute;inset:0;filter:drop-shadow(0 2px 5px rgba(60,30,40,.22));transition:transform 1s cubic-bezier(.6,.05,.3,1) 1.05s}
+.flap{position:absolute;inset:0;background-color:var(--env-1)}
+.flap::after{content:"";position:absolute;inset:0;background-image:var(--grain-url)}
+.fw.l .flap{clip-path:polygon(0 0,50.5% 48%,0 100%);background-image:linear-gradient(90deg,var(--env-3),var(--env-1) 70%)}
+.fw.r .flap{clip-path:polygon(100% 0,49.5% 48%,100% 100%);background-image:linear-gradient(270deg,var(--env-3),var(--env-1) 70%)}
+.fw.b .flap{clip-path:polygon(0 100%,50% 47.5%,100% 100%);background-image:linear-gradient(0deg,var(--env-1),var(--env-2))}
+.fw.t{transform-origin:50% 0;transition:transform 1s cubic-bezier(.55,.05,.3,1) .3s;filter:drop-shadow(0 4px 7px rgba(60,30,40,.3))}
+.fw.t .flap{clip-path:polygon(0 0,100% 0,50% 49%);background-image:linear-gradient(180deg,var(--env-2),var(--env-1))}
+.seal{position:absolute;left:50%;top:48%;width:7.4rem;height:7.4rem;margin:-3.7rem 0 0 -3.7rem;
+  filter:drop-shadow(0 5px 6px rgba(60,30,40,.35));animation:breathe 2.6s ease-in-out infinite}
+.half{position:absolute;inset:0;transition:transform .7s cubic-bezier(.3,.7,.3,1),opacity .6s ease .15s}
+.half.a{clip-path:polygon(0 0,54% 0,47% 18%,55% 34%,46% 52%,54% 70%,47% 86%,52% 100%,0 100%)}
+.half.b{clip-path:polygon(54% 0,100% 0,100% 100%,52% 100%,47% 86%,54% 70%,46% 52%,55% 34%,47% 18%)}
+.wax{position:absolute;inset:0;border-radius:48% 52% 50% 50% / 52% 47% 53% 48%;
+  background:radial-gradient(circle at 34% 28%,var(--seal-hi),transparent 46%),radial-gradient(circle at 70% 78%,var(--seal-lo),transparent 55%),var(--seal);
+  box-shadow:inset 0 0 0 .5rem var(--seal),inset .12rem .14rem .2rem .5rem var(--seal-lo),inset -.1rem -.12rem .2rem .55rem var(--seal-hi);
+  display:grid;place-items:center;font-family:var(--display);font-size:2.5rem;line-height:1;color:var(--seal);
+  text-shadow:1px 1.2px .5px var(--seal-lo),-1px -1px .5px var(--seal-hi)}
+.hint{top:calc(48% + 5.2rem);color:var(--ink);opacity:.75}
+@keyframes breathe{50%{transform:scale(1.045)}}
+.open .seal{animation:none}
+.open .half.a{transform:translate(-2.2rem,1.4rem) rotate(-16deg);opacity:0}
+.open .half.b{transform:translate(2.2rem,1.4rem) rotate(16deg);opacity:0}
+.open .fw.t{transform:rotateX(-178deg)}
+.open .fw.l{transform:translateX(-104%)}
+.open .fw.r{transform:translateX(104%)}
+.open .fw.b{transform:translateY(104%)}
+</style>
+</head>
+<body>
+<div class="opener" id="opener" data-ms="2150" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="bg"></div>
+  <div class="fw l"><div class="flap"></div></div>
+  <div class="fw r"><div class="flap"></div></div>
+  <div class="fw b"><div class="flap"></div></div>
+  <div class="fw t"><div class="flap"></div></div>
+  <div class="seal">
+    <span class="half a"><span class="wax">АМ</span></span>
+    <span class="half b"><span class="wax">АМ</span></span>
+  </div>
+  <div class="hint">Нажмите на печать</div>
+</div>
+<main class="letter" id="letter"></main>
+<script>
+window.INVITE = {
+  names: ['Анна', 'Михаил'], joiner: 'и',
+  date: '2027-07-17T16:00:00+03:00',
+  art: 'river', seed: 11, artLabel: 'Акварельный берег реки с лодкой',
+  lead: 'Дорогие родные и друзья! В этот день мы станем семьёй и очень хотим, чтобы вы были рядом.',
+  venues: [
+    {kind: 'ceremony', title: 'Церемония', time: '16:00', place: 'Площадка у воды', address: 'Адрес сообщим позже'},
+    {kind: 'dinner', title: 'Ужин', time: '18:00', place: 'Шатёр в саду', address: 'Там же, в двух минутах пешком'}
+  ],
+  plan: [['15:30', 'Сбор гостей'], ['16:00', 'Церемония у воды'], ['17:00', 'Фуршет и прогулка'], ['18:00', 'Праздничный ужин'], ['21:00', 'Торт'], ['22:00', 'Танцы и огни']],
+  dress: 'Будем рады, если ваши наряды поддержат палитру праздника. Удобная обувь пригодится: часть вечера пройдёт на траве.',
+  swatches: ['#f1d5da', '#d9a3b2', '#b9c4a6', '#e9d3b4', '#8a6b78'],
+  bye: 'Ждём вас и будем счастливы разделить этот день вместе.'
+};
+</script>
+<script src="../assets/engine.js"></script>
+</body>
+</html>

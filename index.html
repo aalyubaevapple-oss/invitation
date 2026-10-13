@@ -4,486 +4,98 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#e6c4cb">
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Приглашение «Тайна речного сада»</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap">
+<meta name="theme-color" content="#ecebf0">
+<title>Свадебные веб-приглашения</title>
+<meta name="description" content="Портфолио: шесть веб-приглашений на свадьбу с анимацией открытия, обратным отсчётом, местом, программой дня и дресс-кодом.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Great+Vibes&family=Jost:wght@400;500&family=Marck+Script&family=Oswald:wght@600&family=Playfair+Display:ital@1&family=Prata&family=Unbounded:wght@700&display=swap">
 <style>
-/* Узкая колонка-письмо на бумажном фоне: конверт на весь экран, под ним лента блоков с тонкими линейками. */
+/* Витрина: спокойный холодный фон, шесть афиш-«телефонов» в сетке, вся карточка — ссылка. */
 :root{
-  color-scheme:light;
-  /* палитра «Пудра» */
-  --paper:#f4dfe3;
-  --paper-deep:#ebcbd3;
-  --ink:#4b3340;
-  --ink-soft:#8a6b78;
-  --line:#d3a9b6;
-  --accent:#b0607a;
-  --card:#f9ebe6;
-  --env-1:#e6c4cb;
-  --env-2:#efd3d8;
-  --env-3:#d9b1bb;
-  --seal:#ecc9a2;
-  --seal-hi:#fbe6c9;
-  --seal-lo:#c99a6b;
-  --w-sky:#f3c9cf;
-  --w-leaf1:#9bb38a;
-  --w-leaf2:#6f8f6c;
-  --w-water:#b9cfd6;
-  --w-bloom:#e58fa6;
-  --w-reed:#5e6f4c;
-  --d1:#f1d5da; --d2:#d9a3b2; --d3:#b9c4a6; --d4:#e9d3b4; --d5:#8a6b78;
-  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .15 0 0 0 0 .2 0 0 0 .32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --script:"Great Vibes","Marck Script","Snell Roundhand",cursive;
-  --serif:"Cormorant","Cormorant Garamond",Georgia,"Times New Roman",serif;
-  --fs-label:.78rem;
-  --fs-body:1.16rem;
-  --fs-h2:2.7rem;
+  --bg:#ecebf0; --ink:#1d1b22; --soft:#6a6672; --line:#cfcdd6; --accent:#8a3d5c;
+  --display:"Prata",Georgia,serif; --body:"Jost","Helvetica Neue",Arial,sans-serif;
 }
-:root[data-palette="garden"]{
-  --paper:#e8ecdd;
-  --paper-deep:#d6dec8;
-  --ink:#2e3a2f;
-  --ink-soft:#66755f;
-  --line:#aab89a;
-  --accent:#5f7a4a;
-  --card:#f1f3e6;
-  --env-1:#cfd8bf;
-  --env-2:#dbe2cc;
-  --env-3:#bcc8aa;
-  --seal:#c9b27a;
-  --seal-hi:#e9d9a8;
-  --seal-lo:#99834d;
-  --w-sky:#dfe6d2;
-  --w-leaf1:#8fa878;
-  --w-leaf2:#55724f;
-  --w-water:#a8c5c4;
-  --w-bloom:#f2ead2;
-  --w-reed:#4c5f3d;
-  --d1:#e8ecdd; --d2:#aab89a; --d3:#5f7a4a; --d4:#a8c5c4; --d5:#c9b27a;
-}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:70rem;margin:0 auto;padding-inline:1.25rem;padding-block:3.5rem 4rem}
+header{max-width:40rem;display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,8vw,3.6rem);line-height:1.1;margin:0;text-wrap:balance}
+header p{margin:0;color:var(--soft);max-width:36rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 1rem;list-style:none;margin:0;padding:0}
+.work{display:flex;flex-direction:column;gap:.9rem;color:inherit;text-decoration:none}
+.work:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:1.6rem}
+.phone{container-type:inline-size;aspect-ratio:9/16;border-radius:1.4rem;border:.3rem solid #1d1b22;overflow:hidden;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;text-align:center;padding:1rem;
+  box-shadow:0 22px 30px -22px rgba(29,27,34,.6);transition:transform .35s ease}
+.work:hover .phone{transform:translateY(-.4rem)}
+.meta{display:flex;flex-direction:column;gap:.15rem}
+.meta b{font-family:var(--display);font-weight:400;font-size:1.2rem}
+.meta span{color:var(--soft);font-size:.9rem;line-height:1.35}
+.meta em{font-style:normal;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:.3rem}
+.names{line-height:1.05}
+.cap{font-size:4.2cqw;letter-spacing:.24em;text-transform:uppercase}
 
-html{font-size:16px;scroll-behavior:smooth}
-html.locked,html.locked body{overflow:hidden;height:100%}
-body{
-  background:var(--grain),var(--paper);
-  color:var(--ink);
-  font-family:var(--serif);
-  font-size:var(--fs-body);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-.grain{background-image:var(--grain)}
-
-/* ---------- конверт ---------- */
-.env{
-  position:fixed;inset:0;z-index:20;
-  perspective:1400px;
-  cursor:pointer;
-  overflow:hidden;
-  -webkit-tap-highlight-color:transparent;
-}
-.env-back{position:absolute;inset:0;background-color:var(--paper);transition:opacity .8s ease 1.05s}
-.fw{position:absolute;inset:0;filter:drop-shadow(0 2px 5px rgba(60,30,40,.22));transition:transform 1s cubic-bezier(.6,.05,.3,1) 1.05s}
-.flap{position:absolute;inset:0;background-color:var(--env-1)}
-.fw.l .flap{clip-path:polygon(0 0,50.5% 48%,0 100%);background-image:linear-gradient(90deg,var(--env-3),var(--env-1) 70%)}
-.fw.r .flap{clip-path:polygon(100% 0,49.5% 48%,100% 100%);background-image:linear-gradient(270deg,var(--env-3),var(--env-1) 70%)}
-.fw.b .flap{clip-path:polygon(0 100%,50% 47.5%,100% 100%);background-image:linear-gradient(0deg,var(--env-1),var(--env-2))}
-.fw.t{transform-origin:50% 0;transition:transform 1s cubic-bezier(.55,.05,.3,1) .3s;filter:drop-shadow(0 4px 7px rgba(60,30,40,.3))}
-.fw.t .flap{clip-path:polygon(0 0,100% 0,50% 49%);background-image:linear-gradient(180deg,var(--env-2),var(--env-1))}
-.flap::after{content:"";position:absolute;inset:0;background-image:var(--grain)}
-
-.seal{
-  position:absolute;left:50%;top:48%;
-  width:7.4rem;height:7.4rem;margin:-3.7rem 0 0 -3.7rem;
-  border:0;padding:0;background:none;cursor:pointer;
-  filter:drop-shadow(0 5px 6px rgba(60,30,40,.35));
-  animation:breathe 2.6s ease-in-out infinite;
-}
-.seal:focus-visible{outline:2px solid var(--ink);outline-offset:6px;border-radius:50%}
-.half{position:absolute;inset:0;transition:transform .7s cubic-bezier(.3,.7,.3,1),opacity .6s ease .15s}
-.half.a{clip-path:polygon(0 0,54% 0,47% 18%,55% 34%,46% 52%,54% 70%,47% 86%,52% 100%,0 100%)}
-.half.b{clip-path:polygon(54% 0,100% 0,100% 100%,52% 100%,47% 86%,54% 70%,46% 52%,55% 34%,47% 18%)}
-.wax{
-  position:absolute;inset:0;
-  border-radius:48% 52% 50% 50% / 52% 47% 53% 48%;
-  background:
-    radial-gradient(circle at 34% 28%,var(--seal-hi),transparent 46%),
-    radial-gradient(circle at 70% 78%,var(--seal-lo),transparent 55%),
-    var(--seal);
-  box-shadow:inset 0 0 0 .5rem var(--seal),inset .12rem .14rem .2rem .5rem var(--seal-lo),inset -.1rem -.12rem .2rem .55rem var(--seal-hi);
-}
-.wax svg{position:absolute;inset:22%;width:56%;height:56%;fill:var(--seal);stroke:var(--seal);
-  filter:drop-shadow(1px 1.2px .4px var(--seal-lo)) drop-shadow(-1px -1px .4px var(--seal-hi))}
-.hint{
-  position:absolute;left:0;right:0;top:calc(48% + 5.2rem);
-  text-align:center;font-size:var(--fs-label);letter-spacing:.28em;text-transform:uppercase;color:var(--ink);opacity:.75;
-  transition:opacity .4s;
-}
-@keyframes breathe{50%{transform:scale(1.045)}}
-
-.env.open{pointer-events:none}
-.env.open .seal{animation:none}
-.env.open .half.a{transform:translate(-2.2rem,1.4rem) rotate(-16deg);opacity:0}
-.env.open .half.b{transform:translate(2.2rem,1.4rem) rotate(16deg);opacity:0}
-.env.open .hint{opacity:0}
-.env.open .fw.t{transform:rotateX(-178deg)}
-.env.open .fw.l{transform:translateX(-104%)}
-.env.open .fw.r{transform:translateX(104%)}
-.env.open .fw.b{transform:translateY(104%)}
-.env.open .env-back{opacity:0}
-
-/* ---------- письмо ---------- */
-.letter{
-  max-width:30rem;margin:0 auto;
-  padding-inline:1.5rem;padding-block:3rem 6rem;
-  display:flex;flex-direction:column;gap:4.5rem;
-  text-align:center;
-}
-section{display:flex;flex-direction:column;align-items:center;gap:1.1rem;min-width:0}
-.label{font-size:var(--fs-label);letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft)}
-h1,h2{font-family:var(--script);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
-h1{font-size:clamp(3.4rem,17vw,4.6rem);display:flex;flex-direction:column;gap:.1em}
-h1 .amp{font-size:.62em;color:var(--accent)}
-h2{font-size:var(--fs-h2)}
-p{margin:0;max-width:24rem;text-wrap:pretty}
-.rule{width:100%;display:flex;align-items:center;gap:.9rem;color:var(--line)}
-.rule::before,.rule::after{content:"";flex:1;border-top:1px solid currentColor}
-.rule svg{width:1.5rem;height:1.5rem;fill:none;stroke:var(--accent);stroke-width:1.2;stroke-linecap:round}
-
-.scene{width:calc(100% + 3rem);max-width:none;margin-inline:-1.5rem;display:block;
-  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 48%,transparent 98%);
-  mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 48%,transparent 98%)}
-.dateline{font-size:1.5rem;letter-spacing:.22em;font-variant-numeric:lining-nums tabular-nums}
-
-.count{display:grid;grid-template-columns:repeat(4,1fr);width:100%;border-block:1px solid var(--line)}
-.count div{padding-block:1rem;display:flex;flex-direction:column;gap:.2rem;min-width:0}
-.count div+div{border-left:1px solid var(--line)}
-.count b{font-weight:400;font-style:italic;font-size:2.3rem;line-height:1;font-variant-numeric:lining-nums tabular-nums}
-.count span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-
-.venue{display:flex;flex-direction:column;align-items:center;gap:.5rem;width:100%}
-.venue+.venue{margin-top:1.6rem}
-.venue canvas{width:100%;aspect-ratio:16/8;border-radius:2px;
-  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 48%,transparent 98%);
-  mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 48%,transparent 98%)}
-.venue h3{font-style:italic;font-weight:400;font-size:1.55rem;margin:0}
-.venue .when{font-variant-numeric:lining-nums;letter-spacing:.12em}
-.venue .addr{color:var(--ink-soft);font-size:1.02rem}
-.map{display:inline-block;margin-top:.3rem;padding:.5rem 1.3rem;border:1px solid var(--ink);border-radius:999px;
-  color:var(--ink);text-decoration:none;font-size:var(--fs-label);letter-spacing:.22em;text-transform:uppercase}
-.map:hover{background:var(--ink);color:var(--paper)}
-.map:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-
-.plan{list-style:none;margin:0;padding:0;width:100%;position:relative;display:flex;flex-direction:column;gap:1.5rem}
-.plan::before{content:"";position:absolute;left:50%;top:.4rem;bottom:.4rem;border-left:1px solid var(--line)}
-.plan li{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.8rem}
-.plan time{grid-column:2;position:relative;background:var(--ink);color:var(--paper);border-radius:999px;
-  padding:.1rem .7rem;font-size:.95rem;letter-spacing:.06em;font-variant-numeric:lining-nums tabular-nums}
-.plan span{min-width:0;line-height:1.3}
-.plan li:nth-child(odd) span{grid-column:1;grid-row:1;text-align:right}
-.plan li:nth-child(even) span{grid-column:3;text-align:left}
-
-.dress{width:100%;background:var(--card);padding:1.6rem 1.2rem;display:flex;flex-direction:column;align-items:center;gap:1rem;
-  box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(60,30,40,.5)}
-.sw{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
-.sw i{width:2.5rem;height:2.5rem;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-.sign{font-family:var(--script);font-size:2.4rem;line-height:1.1;color:var(--accent)}
-.again{background:none;border:0;border-bottom:1px solid var(--line);padding:0 0 .15rem;color:var(--ink-soft);
-  font:inherit;font-size:var(--fs-label);letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
-.again:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-
-.rv{opacity:.3;transform:translateY(1.4rem);transition:opacity .9s ease,transform .9s ease}
-.rv.in{opacity:1;transform:none}
-
-/* ---------- переключатель образца ---------- */
-.pal{position:fixed;z-index:30;left:.75rem;bottom:0;margin-bottom:calc(.75rem + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:center;gap:.5rem;padding:.4rem .6rem;border-radius:999px;
-  background:var(--card);box-shadow:0 2px 10px rgba(60,30,40,.25);
-  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-.pal button{width:1.5rem;height:1.5rem;border-radius:50%;border:2px solid var(--card);padding:0;cursor:pointer;box-shadow:0 0 0 1px var(--line)}
-.pal button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
-.pal button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.pal .p1{background:#ebcbd3}
-.pal .p2{background:#8fa878}
-
-@media (prefers-reduced-motion:reduce){
-  .seal{animation:none}
-  .fw,.fw.t,.half,.env-back,.rv{transition-duration:.01s;transition-delay:0s}
-  .rv{opacity:1;transform:none}
-  html{scroll-behavior:auto}
-}
+.p1{background:linear-gradient(135deg,#efd3d8,#e0b9c2);color:#4b3340}
+.p1 .names{font-family:"Great Vibes",cursive;font-size:18.4cqw}
+.p1 .dot{width:24.5cqw;height:24.5cqw;border-radius:50%;background:radial-gradient(circle at 34% 28%,#fbe6c9,#ecc9a2 50%,#c99a6b);box-shadow:0 4px 6px rgba(60,30,40,.35)}
+.p2{background:#d6dec8;color:#2e3a2f}
+.p2 .names{font-family:"Marck Script",cursive;font-size:16.3cqw}
+.p2::after{content:"";position:absolute;left:0;right:0;top:64%;height:7.5cqw;background:linear-gradient(180deg,#b79a5c,#8f7541)}
+.p3{background:#111;color:#f5f5f2;align-items:flex-start;justify-content:flex-end;text-align:left}
+.p3 .names{font-family:"Unbounded",sans-serif;font-weight:700;font-size:24.5cqw;line-height:.9;letter-spacing:-.04em}
+.p3 .names i{font-style:normal;color:#e4572e}
+.p4{background:linear-gradient(90deg,#0c1324,#16203a 49.6%,#d2ab5f 49.6%,#d2ab5f 50.4%,#16203a 50.4%,#0c1324);color:#d2ab5f}
+.p4::before{content:"";position:absolute;inset:5.4cqw;border:1px solid #d2ab5f;border-radius:34.0cqw 34.0cqw 0 0}
+.p4 .names{font-family:"Playfair Display",serif;font-style:italic;font-size:13.6cqw;background:#0c1324;padding:4.8cqw 6.1cqw;border-radius:50%;box-shadow:0 0 0 1px #d2ab5f;position:relative}
+.p4 .cap{position:relative;background:#111a30;padding:0.7cqw 2.7cqw}
+.p5{background:linear-gradient(180deg,#9cc4e0,#dcebf4);color:#14263a}
+.p5 .tk{background:#fff;border-radius:4.8cqw;padding:6.1cqw 5.4cqw;width:100%;display:flex;flex-direction:column;gap:3.4cqw;box-shadow:0 10px 14px -8px rgba(20,38,58,.4)}
+.p5 .names{font-family:"Oswald",sans-serif;font-weight:600;font-size:10.9cqw;text-transform:uppercase}
+.p5 .bar{height:9.5cqw;border-top:2px dashed #b6c6d4;padding-top:3.4cqw;background:repeating-linear-gradient(90deg,#14263a 0 2px,transparent 2px 5px,#14263a 5px 6px,transparent 6px 10px) content-box;box-sizing:content-box}
+.p6{background:#cfae82;color:#3b2a1c}
+.p6 .tag{background:#f1e3c8;clip-path:polygon(24% 0,76% 0,100% 13%,100% 100%,0 100%,0 13%);padding:15.0cqw 6.1cqw 8.2cqw;width:78%;display:flex;flex-direction:column;align-items:center;gap:3.4cqw}
+.p6 .names{font-family:"Amatic SC",cursive;font-weight:700;font-size:17.7cqw;line-height:.95}
+.p6 .cap{color:#a23b2a}
+@media (min-width:48rem){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:3rem 2.5rem}.wrap{max-width:60rem}}
+footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);color:var(--soft);font-size:.92rem;max-width:44rem}
 </style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Портфолио</div>
+    <h1>Свадебные веб-приглашения</h1>
+    <p>Шесть работ в разных стилях. Каждая открывается по ссылке на телефоне: анимация открытия, обратный отсчёт, место, программа дня и дресс-код. Нажмите на любую, чтобы посмотреть вживую.</p>
+  </header>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="sprig" viewBox="0 0 100 100">
-    <path d="M50 92 C49 70 50 50 50 30" fill="none" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="M50 30 C40 22 40 10 50 4 C60 10 60 22 50 30Z"/>
-    <path d="M50 52 C36 52 26 44 22 32 C36 30 46 38 50 52Z"/>
-    <path d="M50 52 C64 52 74 44 78 32 C64 30 54 38 50 52Z"/>
-    <path d="M50 74 C36 76 24 70 18 58 C32 54 44 62 50 74Z"/>
-    <path d="M50 74 C64 76 76 70 82 58 C68 54 56 62 50 74Z"/>
-  </symbol>
-</svg>
+  <ul class="grid">
+    <li><a class="work" href="pudra/">
+      <div class="phone p1"><div class="dot"></div><div class="names">Анна<br>и Михаил</div><div class="cap">17 · 07 · 2027</div></div>
+      <div class="meta"><b>Пудра</b><span>Конверт с сургучной печатью, каллиграфия, акварель</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="garden/">
+      <div class="phone p2"><div class="names">Вера<br>и Глеб</div><div class="cap">12 июня 2027</div></div>
+      <div class="meta"><b>Речной сад</b><span>Письмо, перевязанное лентой; зелень, вода и мох</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="mono/">
+      <div class="phone p3"><div class="cap">Свадьба · 04.09.27</div><div class="names">С<i>&amp;</i><br>Н</div></div>
+      <div class="meta"><b>Минимализм</b><span>Шторка, крупный гротеск, чёрное и белое</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="evening/">
+      <div class="phone p4"><div class="names">Е · А</div><div class="cap">18 декабря 2027</div></div>
+      <div class="meta"><b>Вечер</b><span>Распашные двери, тёмно-синий и латунь, огни гирлянд</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="ticket/">
+      <div class="phone p5"><div class="tk"><div class="cap">Посадочный талон</div><div class="names">Лиза + Тимур</div><div class="bar"></div></div></div>
+      <div class="meta"><b>Билет</b><span>Посадочный талон с отрывным корешком, свадьба у моря</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="kraft/">
+      <div class="phone p6"><div class="tag"><div class="names">Маша<br>+ Егор</div><div class="cap">02 · 10 · 27</div></div></div>
+      <div class="meta"><b>Крафт</b><span>Бирка на шпагате, штамп, загородная осень</span><em>Смотреть вживую →</em></div>
+    </a></li>
+  </ul>
 
-<div class="env" id="env" role="button" aria-label="Открыть приглашение">
-  <div class="env-back grain"></div>
-  <div class="fw l"><div class="flap"></div></div>
-  <div class="fw r"><div class="flap"></div></div>
-  <div class="fw b"><div class="flap"></div></div>
-  <div class="fw t"><div class="flap"></div></div>
-  <button class="seal" id="seal" type="button" aria-label="Сломать печать и открыть приглашение">
-    <span class="half a"><span class="wax"><svg><use href="#sprig"/></svg></span></span>
-    <span class="half b"><span class="wax"><svg><use href="#sprig"/></svg></span></span>
-  </button>
-  <div class="hint">Нажмите на печать</div>
+  <footer>Это демонстрационные работы: пары, даты и места в них вымышленные. В готовом приглашении меняются имена, тексты, палитра, иллюстрации и программа.</footer>
 </div>
-
-<main class="letter" id="letter">
-  <section>
-    <div class="label">Приглашение на свадьбу</div>
-    <h1><span id="n1"></span><span class="amp">и</span><span id="n2"></span></h1>
-    <canvas class="scene" id="scene" width="760" height="470" role="img" aria-label="Акварельный берег реки с лодкой и камышами"></canvas>
-    <div class="dateline" id="dateline"></div>
-    <div class="label" id="weekday"></div>
-  </section>
-
-  <section class="rv">
-    <div class="rule"><svg viewBox="0 0 24 24"><path d="M12 21V8M12 8c-3-1-4-4-3-6 3 1 4 3 3 6ZM12 14c-3 0-5-2-6-5 3 0 5 2 6 5ZM12 14c3 0 5-2 6-5-3 0-5 2-6 5Z"/></svg></div>
-    <p id="lead"></p>
-  </section>
-
-  <section class="rv">
-    <h2>До встречи</h2>
-    <div class="count" id="count" aria-live="off">
-      <div><b id="cd">0</b><span id="cdl">дней</span></div>
-      <div><b id="ch">0</b><span id="chl">часов</span></div>
-      <div><b id="cm">0</b><span id="cml">минут</span></div>
-      <div><b id="cs">0</b><span id="csl">секунд</span></div>
-    </div>
-  </section>
-
-  <section class="rv">
-    <h2>Место</h2>
-    <div id="venues" style="width:100%"></div>
-  </section>
-
-  <section class="rv">
-    <h2>Программа дня</h2>
-    <ol class="plan" id="plan"></ol>
-  </section>
-
-  <section class="rv">
-    <h2>Дресс-код</h2>
-    <div class="dress">
-      <p id="dress"></p>
-      <div class="sw" aria-label="Палитра праздника"><i style="background:var(--d1)"></i><i style="background:var(--d2)"></i><i style="background:var(--d3)"></i><i style="background:var(--d4)"></i><i style="background:var(--d5)"></i></div>
-    </div>
-  </section>
-
-  <section class="rv">
-    <div class="rule"><svg viewBox="0 0 24 24"><path d="M12 21V8M12 8c-3-1-4-4-3-6 3 1 4 3 3 6ZM12 14c-3 0-5-2-6-5 3 0 5 2 6 5ZM12 14c3 0 5-2 6-5-3 0-5 2-6 5Z"/></svg></div>
-    <p id="bye"></p>
-    <div class="sign" id="sign"></div>
-    <button class="again" id="again" type="button">Закрыть конверт</button>
-  </section>
-</main>
-
-<div class="pal" id="pal">
-  <span>Образец</span>
-  <button class="p1" type="button" data-p="pudra" aria-label="Палитра «Пудра»" aria-pressed="true"></button>
-  <button class="p2" type="button" data-p="garden" aria-label="Палитра «Сад»" aria-pressed="false"></button>
-</div>
-
-<script>
-/* Все данные приглашения — здесь. Имена, дата и места условные, пока не выбраны настоящие. */
-const INVITE = {
-  names: ['Анна', 'Михаил'],
-  date: '2027-07-17T16:00:00+03:00',
-  lead: 'Дорогие родные и друзья! В этот день мы станем семьёй и очень хотим, чтобы вы были рядом.',
-  venues: [
-    {kind: 'ceremony', title: 'Церемония', time: '16:00', place: 'Площадка у воды', address: 'Адрес сообщим позже', mapUrl: ''},
-    {kind: 'dinner', title: 'Ужин', time: '18:00', place: 'Шатёр в саду', address: 'Там же, в двух минутах пешком', mapUrl: ''}
-  ],
-  plan: [
-    ['15:30', 'Сбор гостей'],
-    ['16:00', 'Церемония у воды'],
-    ['17:00', 'Фуршет и прогулка'],
-    ['18:00', 'Праздничный ужин'],
-    ['21:00', 'Торт'],
-    ['22:00', 'Танцы и огни']
-  ],
-  dress: 'Будем рады, если ваши наряды поддержат палитру праздника. Удобная обувь пригодится: часть вечера пройдёт на траве.',
-  bye: 'Ждём вас и будем счастливы разделить этот день вместе.'
-};
-
-const $ = id => document.getElementById(id);
-const root = document.documentElement;
-const when = new Date(INVITE.date);
-
-/* ---------- тексты ---------- */
-$('n1').textContent = INVITE.names[0];
-$('n2').textContent = INVITE.names[1];
-$('sign').textContent = INVITE.names.join(' и ');
-$('lead').textContent = INVITE.lead;
-$('dress').textContent = INVITE.dress;
-$('bye').textContent = INVITE.bye;
-const msk = {timeZone: 'Europe/Moscow'};
-$('dateline').textContent = when.toLocaleDateString('ru-RU', {...msk, day: '2-digit', month: '2-digit', year: 'numeric'}).replace(/\./g, ' · ');
-$('weekday').textContent = when.toLocaleDateString('ru-RU', {...msk, weekday: 'long'}) + ', начало в ' +
-  when.toLocaleTimeString('ru-RU', {...msk, hour: '2-digit', minute: '2-digit'});
-
-$('plan').innerHTML = INVITE.plan.map(([t, s]) => `<li><time>${t}</time><span>${s}</span></li>`).join('');
-$('venues').innerHTML = INVITE.venues.map((v, i) => `
-  <div class="venue">
-    <canvas width="640" height="320" data-kind="${v.kind}" data-seed="${i + 3}" role="img" aria-label="${v.title}: акварельный набросок"></canvas>
-    <h3>${v.title}</h3>
-    <div class="when">${v.time} · ${v.place}</div>
-    <div class="addr">${v.address}</div>
-    ${v.mapUrl ? `<a class="map" href="${v.mapUrl}" target="_blank" rel="noopener">Открыть карту</a>` : ''}
-  </div>`).join('');
-
-/* ---------- обратный отсчёт ---------- */
-const plural = (n, f) => f[n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
-function tick() {
-  let s = Math.max(0, Math.floor((when - Date.now()) / 1000));
-  const d = Math.floor(s / 86400); s -= d * 86400;
-  const h = Math.floor(s / 3600); s -= h * 3600;
-  const m = Math.floor(s / 60); s -= m * 60;
-  $('cd').textContent = d; $('cdl').textContent = plural(d, ['день', 'дня', 'дней']);
-  $('ch').textContent = h; $('chl').textContent = plural(h, ['час', 'часа', 'часов']);
-  $('cm').textContent = m; $('cml').textContent = plural(m, ['минута', 'минуты', 'минут']);
-  $('cs').textContent = s; $('csl').textContent = plural(s, ['секунда', 'секунды', 'секунд']);
-}
-tick(); setInterval(tick, 1000);
-
-/* ---------- акварель ---------- */
-function rng(seed) {
-  return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
-    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
-}
-function paint(cv, kind, seed) {
-  const c = cv.getContext('2d'), W = cv.width, H = cv.height, r = rng(seed * 7919);
-  const css = getComputedStyle(root), col = n => css.getPropertyValue(n).trim();
-  const sky = col('--w-sky'), l1 = col('--w-leaf1'), l2 = col('--w-leaf2'), water = col('--w-water'),
-        bloom = col('--w-bloom'), reed = col('--w-reed'), ink = col('--ink'), paper = col('--paper');
-  c.clearRect(0, 0, W, H);
-  // пятно краски: несколько неровных прозрачных слоёв
-  const blob = (x, y, rx, ry, color, a, layers = 4) => {
-    c.fillStyle = color;
-    for (let k = 0; k < layers; k++) {
-      c.globalAlpha = a * (.6 + r() * .6);
-      const n = 9, pts = [];
-      for (let i = 0; i < n; i++) {
-        const an = i / n * Math.PI * 2, j = .72 + r() * .5;
-        pts.push([x + Math.cos(an) * rx * j, y + Math.sin(an) * ry * j]);
-      }
-      c.beginPath();
-      for (let i = 0; i <= n; i++) {
-        const p = pts[i % n], q = pts[(i + 1) % n], mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2;
-        i ? c.quadraticCurveTo(p[0], p[1], mx, my) : c.moveTo(mx, my);
-      }
-      c.fill();
-    }
-    c.globalAlpha = 1;
-  };
-  const hz = H * .5;
-  for (let i = 0; i < 14; i++) blob(r() * W, r() * hz * .9, W * .22, H * .16, sky, .09);
-  // дальний берег
-  for (let i = 0; i < 46; i++) {
-    const x = r() * W, s = 22 + r() * 46;
-    blob(x, hz - s * .55 - r() * 14, s, s * .8, r() > .45 ? l1 : l2, .11);
-  }
-  // вода и отражения
-  for (let i = 0; i < 26; i++) blob(r() * W, hz + 8 + r() * (H - hz), W * (.12 + r() * .2), 7 + r() * 9, water, .12, 3);
-  for (let i = 0; i < 16; i++) blob(r() * W, hz + 10 + r() * 46, 40 + r() * 50, 9, l2, .05, 2);
-
-  if (kind === 'river') {            // лодка
-    const bx = W * .56, by = hz + 62;
-    c.globalAlpha = .55; c.fillStyle = ink;
-    c.beginPath(); c.moveTo(bx - 58, by - 9); c.quadraticCurveTo(bx, by + 17, bx + 62, by - 11);
-    c.quadraticCurveTo(bx, by + 2, bx - 58, by - 9); c.fill();
-    c.globalAlpha = .12; c.fillRect(bx - 50, by + 12, 104, 2); c.globalAlpha = 1;
-  }
-  if (kind === 'ceremony') {         // арка из зелени
-    const ax = W / 2, ay = hz + 44, R = H * .3;
-    for (let i = 0; i <= 44; i++) {
-      const an = Math.PI + i / 44 * Math.PI, x = ax + Math.cos(an) * R * .82, y = ay + Math.sin(an) * R * 1.15;
-      blob(x, y, 13, 12, i % 3 ? l2 : l1, .2, 3);
-      if (i % 4 === 1) blob(x + (r() - .5) * 10, y + (r() - .5) * 10, 6, 6, bloom, .5, 2);
-    }
-    c.globalAlpha = .3; c.fillStyle = paper; c.fillRect(ax - R * .82 - 3, ay, 6, 26); c.fillRect(ax + R * .82 - 3, ay, 6, 26); c.globalAlpha = 1;
-  }
-  if (kind === 'dinner') {           // шатёр и гирлянда
-    const tx = W / 2, ty = hz - 78, tw = W * .27;
-    c.fillStyle = paper; c.globalAlpha = .82;
-    c.beginPath(); c.moveTo(tx, ty); c.lineTo(tx + tw, ty + 62); c.lineTo(tx - tw, ty + 62); c.closePath(); c.fill();
-    c.globalAlpha = .5; c.fillRect(tx - tw * .86, ty + 62, tw * 1.72, 62);
-    c.globalAlpha = .45; c.strokeStyle = ink; c.lineWidth = 1.2;
-    c.beginPath(); c.moveTo(tx, ty); c.lineTo(tx + tw, ty + 62); c.lineTo(tx - tw, ty + 62); c.closePath(); c.stroke();
-    for (const k of [-.86, -.3, .3, .86]) { c.beginPath(); c.moveTo(tx + tw * k, ty + 62); c.lineTo(tx + tw * k, ty + 124); c.stroke(); }
-    c.globalAlpha = 1;
-    for (let i = 0; i <= 16; i++) {
-      const u = i / 16, x = tx - tw * .86 + u * tw * 1.72, y = ty + 70 + Math.sin(u * Math.PI) * 16;
-      blob(x, y, 4.5, 4.5, bloom, .7, 2);
-    }
-  }
-  // камыши и цветы по краям
-  c.lineCap = 'round';
-  for (const side of [0, 1]) for (let i = 0; i < 26; i++) {
-    const x = side ? W - r() * W * .3 : r() * W * .3, y0 = H - r() * 20, h = H * (.2 + r() * .36), lean = (r() - .5) * 46;
-    c.globalAlpha = .45 + r() * .3; c.strokeStyle = reed; c.lineWidth = 1.2 + r() * 1.6;
-    c.beginPath(); c.moveTo(x, y0); c.quadraticCurveTo(x + lean * .3, y0 - h * .6, x + lean, y0 - h); c.stroke();
-    c.globalAlpha = 1;
-    if (i % 5 === 0) blob(x + lean, y0 - h, 3.6, 12, ink, .22, 2);
-    else if (i % 3 === 0) blob(x + lean, y0 - h, 8, 8, bloom, .42, 3);
-  }
-  for (let i = 0; i < 16; i++) blob(r() * W, H - r() * 34, 46, 16, l1, .1, 3);
-}
-function paintAll() {
-  paint($('scene'), 'river', 11);
-  document.querySelectorAll('.venue canvas').forEach(cv => paint(cv, cv.dataset.kind, +cv.dataset.seed));
-}
-
-/* ---------- палитра ---------- */
-function setPalette(p) {
-  p === 'garden' ? root.setAttribute('data-palette', 'garden') : root.removeAttribute('data-palette');
-  document.querySelectorAll('#pal button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.p === p)));
-  try { localStorage.setItem('invite-palette', p); } catch (e) {}
-  paintAll();
-}
-let saved = 'pudra';
-try { saved = localStorage.getItem('invite-palette') || 'pudra'; } catch (e) {}
-setPalette(saved);
-$('pal').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setPalette(b.dataset.p); });
-
-/* ---------- конверт ---------- */
-const env = $('env');
-let timer;
-root.classList.add('locked');
-function openEnv() {
-  if (env.classList.contains('open')) return;
-  env.classList.add('open');
-  clearTimeout(timer);
-  timer = setTimeout(() => { env.hidden = true; root.classList.remove('locked'); }, 2150);
-}
-env.addEventListener('click', openEnv);
-$('again').addEventListener('click', () => {
-  clearTimeout(timer);
-  window.scrollTo(0, 0);
-  root.classList.add('locked');
-  env.hidden = false;
-  requestAnimationFrame(() => requestAnimationFrame(() => env.classList.remove('open')));
-});
-
-/* ---------- появление блоков ---------- */
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: .15});
-  document.querySelectorAll('.rv').forEach(el => io.observe(el));
-} else document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
-</script>
-
 </body>
 </html>

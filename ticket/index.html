@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#bcd7ea">
+<title>Билет · Лиза и Тимур</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=PT+Mono&display=swap">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+/* Посадочный талон: небо, белые карточки, моноширинные поля. Открывается отрывом корешка. */
+:root{
+  --paper:#dbe9f3; --ink:#14263a; --ink-soft:#5d7186; --line:#b6c6d4; --accent:#d9482b; --card:#eef4f8;
+  --display:"Oswald","Arial Narrow",sans-serif;
+  --body:"PT Mono","Courier New",monospace;
+  --h1-size:clamp(3rem,15vw,4rem); --h2-size:1.5rem; --h-weight:600; --h-transform:uppercase; --h-lh:1.05; --h-spacing:.02em;
+  --fs-body:.92rem; --label-spacing:.14em; --gap:1rem;
+  --date-font:var(--display); --date-size:2rem; --date-weight:600; --date-spacing:.06em;
+  --num-font:var(--display); --num-style:normal; --num-weight:600; --num-size:2rem;
+  --h3-font:var(--display); --h3-style:normal; --h3-weight:600;
+  --pill-radius:4px; --radius:8px; --sw-radius:4px; --sign-size:1.7rem;
+  --bg-delay:.9s;
+}
+body{background:linear-gradient(180deg,#bcd7ea,#e6f0f6 60%) fixed}
+.letter section{background:#fff;border-radius:14px;padding:1.5rem 1.2rem;width:100%;box-shadow:0 8px 20px -14px rgba(20,38,58,.5)}
+.rule{display:none}
+.dress{box-shadow:none;padding:1rem}
+.opener .bg{background:linear-gradient(180deg,#9cc4e0,#dcebf4)}
+.tk{position:absolute;left:50%;top:50%;width:min(21rem,86%);transform:translate(-50%,-52%);font-family:var(--body);color:var(--ink);filter:drop-shadow(0 14px 18px rgba(20,38,58,.35))}
+.tk-main,.tk-stub{background:#fff;position:relative}
+.tk-main{border-radius:14px 14px 0 0;padding:1.2rem 1.2rem 1.4rem;transition:transform .9s cubic-bezier(.6,0,.3,1) .5s}
+.tk-stub{border-radius:0 0 14px 14px;padding:1.1rem 1.2rem 1.2rem;border-top:2px dashed var(--line);transform-origin:0 0;
+  transition:transform .85s cubic-bezier(.5,0,.9,.5);-webkit-mask:radial-gradient(circle .6rem at 0 0,transparent 98%,#000) left top/51% 100% no-repeat,radial-gradient(circle .6rem at 100% 0,transparent 98%,#000) right top/51% 100% no-repeat;
+  mask:radial-gradient(circle .6rem at 0 0,transparent 98%,#000) left top/51% 100% no-repeat,radial-gradient(circle .6rem at 100% 0,transparent 98%,#000) right top/51% 100% no-repeat}
+.tk-head{display:flex;justify-content:space-between;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.tk-route{font-family:var(--display);font-weight:600;font-size:2.3rem;line-height:1.1;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin:.9rem 0 1rem}
+.tk-route i{flex:1;border-top:2px dashed var(--accent);position:relative}
+.tk-route i::after{content:"✈";position:absolute;left:50%;top:-.95rem;margin-left:-.6rem;font-style:normal;font-size:1.2rem;color:var(--accent);background:#fff;padding:0 .2rem}
+.tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1rem}
+.tk-grid small{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.tk-grid b{font-weight:400;font-size:.95rem}
+.bar{height:2.6rem;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 10px,var(--ink) 10px 13px,transparent 13px 15px)}
+.tear{margin-top:.7rem;text-align:center;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.open .tk-stub{transform:translateY(120vh) rotate(11deg)}
+.open .tk-main{transform:translateY(-130vh)}
+</style>
+</head>
+<body>
+<div class="opener" id="opener" data-ms="1750" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="bg"></div>
+  <div class="tk">
+    <div class="tk-main">
+      <div class="tk-head"><span>Посадочный талон</span><span>Рейс LT 2108</span></div>
+      <div class="tk-route"><span>Двое</span><i></i><span>Семья</span></div>
+      <div class="tk-grid">
+        <div><small>Пассажир</small><b>Дорогой гость</b></div>
+        <div><small>Дата</small><b>21.08.2027</b></div>
+        <div><small>Посадка</small><b>15:30</b></div>
+        <div><small>Место</small><b>Рядом с нами</b></div>
+      </div>
+    </div>
+    <div class="tk-stub"><div class="bar"></div><div class="tear">✂ Оторвите корешок</div></div>
+  </div>
+</div>
+<main class="letter" id="letter"></main>
+<script>
+window.INVITE = {
+  names: ['Лиза', 'Тимур'], joiner: '+', left: true,
+  date: '2027-08-21T16:00:00+03:00', dateSep: '.',
+  art: 'route', route: ['ДВОЕ', 'СЕМЬЯ'],
+  eyebrow: 'Рейс LT 2108 · Свадьба',
+  lead: 'Уважаемые пассажиры! Мы отправляемся в самое долгое путешествие и приглашаем вас на борт.',
+  titles: {count: 'До вылета', place: 'Пункт назначения', plan: 'Расписание', dress: 'Ручная кладь'},
+  venues: [
+    {title: 'Церемония', time: '16:00', place: 'Терраса с видом на море', address: 'Адрес сообщим позже'},
+    {title: 'Ужин', time: '18:00', place: 'Ресторан у пляжа', address: 'Трансфер от церемонии'}
+  ],
+  plan: [['15:30', 'Регистрация гостей'], ['16:00', 'Церемония'], ['17:00', 'Аперитив на закате'], ['18:00', 'Ужин'], ['21:00', 'Торт'], ['22:00', 'Танцы на песке']],
+  dress: 'Светлые лёгкие ткани, лён, песочные и морские оттенки. Каблуки лучше оставить дома: будет песок.',
+  swatches: ['#ffffff', '#e9dcc3', '#9cc4e0', '#14263a', '#d9482b'],
+  bye: 'Приятного полёта. Ждём вас на посадке.'
+};
+</script>
+<script src="../assets/engine.js"></script>
+</body>
+</html>

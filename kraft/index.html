@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#cfae82">
+<title>Крафт · Маша и Егор</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=PT+Serif:ital,wght@0,400;1,400&display=swap">
+<link rel="stylesheet" href="../assets/engine.css">
+<style>
+/* Крафтовая бумага, бирка на шпагате и красный штамп. Загородная свадьба. */
+:root{
+  --paper:#e6d2b0; --ink:#3b2a1c; --ink-soft:#7a6248; --line:#a98c63; --accent:#a23b2a; --card:#f1e3c8;
+  --grain:var(--grain-url);
+  --display:"Amatic SC","Marck Script",cursive;
+  --body:"PT Serif",Georgia,serif;
+  --h1-size:clamp(4.4rem,22vw,5.8rem); --h2-size:3rem; --h-weight:700; --h-lh:.95; --h-spacing:.03em;
+  --fs-body:1.02rem;
+  --num-font:var(--display); --num-style:normal; --num-weight:700; --num-size:3rem;
+  --pill-bg:var(--accent); --pill-fg:#f6ead2; --pill-radius:3px; --radius:3px; --sign-size:3rem;
+  --card-shadow:0 0 0 1px var(--line),4px 4px 0 var(--line);
+  --w-sky:#f3e2c2; --w-leaf1:#b9a56b; --w-leaf2:#7d7a46; --w-water:#dcbd83; --w-bloom:#fff6e0; --w-reed:#6d5a35;
+  --kraft:#cfae82; --twine:#7a5a36;
+  --bg-delay:.6s;
+}
+.rule i{border-radius:50%;transform:none}
+.plan time{font-family:var(--body)}
+.opener .bg{background:var(--grain-url),var(--kraft)}
+.hang{position:absolute;left:50%;top:0;width:min(17rem,74vw);margin-left:calc(min(17rem,74vw) / -2);
+  transform-origin:50% 0;animation:swing 4.5s ease-in-out infinite;filter:drop-shadow(0 12px 12px rgba(50,30,10,.35));
+  transition:transform 1s cubic-bezier(.6,0,.9,.5)}
+.twine{width:3px;height:24vh;margin:0 auto;background:repeating-linear-gradient(160deg,var(--twine) 0 3px,#a07a4c 3px 6px)}
+.tag{margin-top:-1.3rem;padding:3.4rem 1.2rem 2rem;text-align:center;color:var(--ink);
+  background:var(--grain-url),var(--card);clip-path:polygon(24% 0,76% 0,100% 13%,100% 100%,0 100%,0 13%);
+  display:flex;flex-direction:column;align-items:center;gap:1.1rem;position:relative}
+.tag::before{content:"";position:absolute;left:50%;top:1rem;width:1.2rem;height:1.2rem;margin-left:-.6rem;border-radius:50%;background:var(--kraft);box-shadow:0 0 0 3px var(--line)}
+.tag small{font-family:var(--body);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+.tag b{font-family:var(--display);font-weight:700;font-size:3.4rem;line-height:.95}
+.stamp{width:7rem;height:7rem;border-radius:50%;border:2px solid var(--accent);outline:1px dashed var(--accent);outline-offset:-.45rem;color:var(--accent);
+  display:grid;place-content:center;gap:.1rem;transform:rotate(-9deg);opacity:.85}
+.stamp span{font-family:var(--body);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase}
+.stamp strong{font-family:var(--display);font-size:1.9rem;line-height:1}
+.hint{bottom:calc(1.6rem + env(safe-area-inset-bottom,0px));color:var(--ink)}
+@keyframes swing{0%,100%{transform:rotate(-2.2deg)}50%{transform:rotate(2.2deg)}}
+.open .hang{animation:none;transform:translateY(130vh) rotate(16deg)}
+</style>
+</head>
+<body>
+<div class="opener" id="opener" data-ms="1500" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="bg"></div>
+  <div class="hang">
+    <div class="twine"></div>
+    <div class="tag">
+      <small>Вам приглашение</small>
+      <b>Маша<br>+ Егор</b>
+      <div class="stamp"><span>Свадьба</span><strong>02·10·27</strong><span>За городом</span></div>
+    </div>
+  </div>
+  <div class="hint">Снимите бирку</div>
+</div>
+<main class="letter" id="letter"></main>
+<script>
+window.INVITE = {
+  names: ['Маша', 'Егор'], joiner: '+',
+  date: '2027-10-02T14:00:00+03:00', dateFormat: 'long',
+  art: 'meadow', seed: 31, artLabel: 'Осеннее поле с травами',
+  eyebrow: 'Свадьба за городом',
+  lead: 'Яблочный пирог, пледы, костёр и вы. Приезжайте на наш осенний праздник под открытым небом.',
+  titles: {count: 'Осталось', place: 'Куда ехать', plan: 'План дня', dress: 'Что надеть'},
+  venues: [
+    {kind: 'ceremony', title: 'Церемония в поле', time: '14:00', place: 'Арка у старой яблони', address: 'Адрес сообщим позже'},
+    {kind: 'dinner', title: 'Обед в амбаре', time: '15:30', place: 'Амбар на усадьбе', address: 'Сто шагов от арки'}
+  ],
+  plan: [['13:30', 'Сбор гостей, сидр'], ['14:00', 'Церемония'], ['15:30', 'Обед'], ['18:00', 'Пироги и чай'], ['19:00', 'Костёр'], ['20:00', 'Танцы в амбаре']],
+  dress: 'Тёплые осенние цвета, шерсть, твид, вязаное. Обувь без каблука: вокруг трава и гравий.',
+  swatches: ['#f1e3c8', '#cfae82', '#a23b2a', '#7d7a46', '#3b2a1c'],
+  bye: 'Обнимаем и очень ждём.'
+};
+</script>
+<script src="../assets/engine.js"></script>
+</body>
+</html>
