@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#ecebf0">
 <title>Свадебные веб-приглашения</title>
-<meta name="description" content="Портфолио: шесть веб-приглашений на свадьбу с анимацией открытия, обратным отсчётом, местом, программой дня и дресс-кодом.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Great+Vibes&family=Jost:wght@400;500&family=Marck+Script&family=Oswald:wght@600&family=Playfair+Display:ital@1&family=Prata&family=Unbounded:wght@700&display=swap">
+<meta name="description" content="Портфолио: семь веб-приглашений на свадьбу с анимацией открытия, обратным отсчётом, местом, программой дня и дресс-кодом.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Caveat:wght@500&family=Pangolin&family=Great+Vibes&family=Jost:wght@400;500&family=Marck+Script&family=Oswald:wght@600&family=Playfair+Display:ital@1&family=Prata&family=Unbounded:wght@700&display=swap">
 <style>
 /* Витрина: спокойный холодный фон, шесть афиш-«телефонов» в сетке, вся карточка — ссылка. */
 :root{
@@ -57,6 +57,12 @@ header p{margin:0;color:var(--soft);max-width:36rem}
 .p6 .names{font-family:"Amatic SC",cursive;font-weight:700;font-size:17.7cqw;line-height:.95}
 .p6 .cap{color:#a23b2a}
 @media (min-width:48rem){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:3rem 2.5rem}.wrap{max-width:60rem}}
+.p7{background:#fff6e0;color:#2a2622;justify-content:flex-start;padding-top:0}
+.p7 .str{width:140%;height:20cqw;border-bottom:1cqw solid #cf2459;border-radius:0 0 50% 50%;margin-top:-6cqw}
+.p7 .hrt{color:#cf2459;font-size:15cqw;line-height:1;margin-top:-7cqw}
+.p7 .names{font-family:"Pangolin",cursive;font-size:13cqw;margin-top:22cqw}
+.p7 .cap{font-family:"Caveat",cursive;font-size:8cqw;letter-spacing:0;text-transform:none}
+.p7::after{content:"приглашение на свадьбу ♥ мы женимся";position:absolute;left:0;right:0;bottom:0;background:#cf2459;color:#fff6e0;font-family:"Caveat",cursive;font-size:7.5cqw;white-space:nowrap;overflow:hidden;padding:2cqw 4cqw}
 footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);color:var(--soft);font-size:.92rem;max-width:44rem}
 </style>
 </head>
@@ -65,7 +71,7 @@ footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);co
   <header>
     <div class="eyebrow">Портфолио</div>
     <h1>Свадебные веб-приглашения</h1>
-    <p>Шесть работ в разных стилях. Каждая открывается по ссылке на телефоне: анимация открытия, обратный отсчёт, место, программа дня и дресс-код. Нажмите на любую, чтобы посмотреть вживую.</p>
+    <p>Семь работ в разных стилях. Каждая открывается по ссылке на телефоне: анимация открытия, обратный отсчёт, место, программа дня и дресс-код. Нажмите на любую, чтобы посмотреть вживую.</p>
   </header>
 
   <ul class="grid">
@@ -92,6 +98,10 @@ footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);co
     <li><a class="work" href="kraft/">
       <div class="phone p6"><div class="tag"><div class="names">Маша<br>+ Егор</div><div class="cap">02 · 10 · 27</div></div></div>
       <div class="meta"><b>Крафт</b><span>Бирка на шпагате, штамп, загородная осень</span><em>Смотреть вживую →</em></div>
+    </a></li>
+    <li><a class="work" href="finally/">
+      <div class="phone p7"><div class="str"></div><div class="hrt">♥</div><div class="names">наконец-то</div><div class="cap">Соня и Даня · 24 июля 2027</div></div>
+      <div class="meta"><b>Наконец-то</b><span>Детские фото-наклейки, сердце на ниточке, рукописные буквы</span><em>Смотреть вживую →</em></div>
     </a></li>
   </ul>
 

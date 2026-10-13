@@ -12,7 +12,7 @@
   const weekday = when.toLocaleDateString('ru-RU', {...msk, weekday: 'long'}) + ', начало в ' +
     when.toLocaleTimeString('ru-RU', {...msk, hour: '2-digit', minute: '2-digit'});
   const rule = '<div class="rule"><i></i></div>';
-  const art = I.art === 'none' ? '' : I.art === 'route'
+  const art = I.art === 'none' ? '' : I.art === 'html' ? I.artHtml : I.art === 'route'
     ? `<svg class="route" viewBox="0 0 320 110" role="img" aria-label="Маршрут к свадьбе">
         <path d="M24 86 Q160 -24 296 86" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 6" stroke-linecap="round"/>
         <circle cx="24" cy="86" r="4.5" fill="currentColor"/><circle cx="296" cy="86" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
