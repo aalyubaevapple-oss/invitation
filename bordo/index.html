@@ -33,7 +33,8 @@
   --cw:min(76vw,21rem,48vh);
   --bg-delay:1.95s;
 }
-.dress,.back{color:#f6ede4}
+.dress,.back,.plan.cards li{color:#f6ede4}
+.plan.cards time{color:var(--seal)}
 .dress .sw i{box-shadow:inset 0 0 0 1px rgba(246,237,228,.35)}
 .cal{width:100%;max-width:19rem;display:grid;grid-template-columns:repeat(7,1fr);row-gap:.3rem;font-variant-numeric:lining-nums;line-height:1}
 .cal strong{grid-column:1/-1;font-family:var(--display);font-weight:400;font-size:1.5rem;padding-bottom:.7rem}
@@ -141,6 +142,11 @@ window.INVITE = {
   plan: [['15:00', 'Сбор гостей'], ['15:30', 'Церемония'], ['16:30', 'Фуршет и фотографии'], ['17:30', 'Банкет'], ['20:30', 'Торт'], ['21:30', 'Танцы']],
   dress: 'Будем рады оттенкам вина, пыльной розы и сливок. Мужчинам подойдут тёмные костюмы.',
   swatches: ['#5e1424', '#8c1c2e', '#c98a8f', '#e9d6c4', '#3a3a34'],
+  sections: ['lead', 'venues', {type: 'plan', as: 'cards'}, 'dress',
+    {type: 'list', title: 'Пожелания', items: [
+      ['Цветы', 'Мы улетаем на следующий день и не успеем ими насладиться. Вместо букета порадуйте нас открыткой с тёплыми словами.'],
+      ['Подарки', 'Лучшим подарком станет вклад в наше свадебное путешествие.'],
+      ['Дети', 'Будем рады видеть вас с детьми: для них готовим отдельный стол.']]}],
   bye: 'С любовью и нетерпением ждём встречи.'
 };
 </script>

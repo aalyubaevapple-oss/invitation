@@ -34,6 +34,52 @@
     'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
   const icsHref = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
 
+  /* ---------- блоки письма ----------
+     Состав и порядок задаёт I.sections: строка с типом блока или объект {type, as, title, items, text}.
+     as выбирает подачу: count — cells | big | line; plan — timeline | table | menu | board | cards; venues — cards | list. */
+  const order = (I.sections || ['lead', 'count', 'venues', 'plan', 'dress']).map(x => typeof x === 'string' ? {type: x} : x);
+  if (!order.some(o => o.type === 'bye')) order.push({type: 'bye'});
+  const calAt = order.some(o => o.type === 'count') ? 'count' : 'venues';
+  const calBtn = t => t === calAt ? `<a class="btn" href="${icsHref}" download="wedding.ics">Добавить в календарь</a>` : '';
+  const h2 = t => t ? `<h2>${t}</h2>` : '';
+  const pair = x => Array.isArray(x) ? x : [null, x];
+  const blocks = {
+    lead: () => `${rule}<p>${I.lead}</p>`,
+    quote: o => `<blockquote class="quote">${o.text}</blockquote>`,
+    count: o => h2(o.as === 'line' ? '' : T.count) + (
+      o.as === 'big' ? `<div class="bigcount"><b id="cd">0</b><span id="cdl">дней</span></div>
+        <div class="countrest"><b id="ch">0</b> <span id="chl">часов</span> · <b id="cm">0</b> <span id="cml">минут</span> · <b id="cs">0</b> <span id="csl">секунд</span></div>`
+      : o.as === 'line' ? `${rule}<p class="countline">${T.count} <b id="cd">0</b> <span id="cdl">дней</span></p>`
+      : `<div class="count">
+        <div><b id="cd">0</b><span id="cdl">дней</span></div><div><b id="ch">0</b><span id="chl">часов</span></div>
+        <div><b id="cm">0</b><span id="cml">минут</span></div><div><b id="cs">0</b><span id="csl">секунд</span></div>
+      </div>`) + calBtn('count'),
+    venues: o => `${h2(T.place)}
+      <div class="venues ${o.as || 'cards'}">${I.venues.map((v, i) => `
+        <div class="venue">
+          ${o.as === 'list' ? `<i class="no">${z(i + 1)}</i>` : v.kind ? `<canvas width="640" height="320" data-kind="${v.kind}" data-seed="${(I.seed || 11) + i + 3}" role="img" aria-label="${v.title}: набросок"></canvas>` : ''}
+          <div class="vt"><h3>${v.title}</h3>
+          <div class="when">${v.time} · ${v.place}</div>
+          <div class="addr">${v.address}</div>
+          ${v.mapUrl ? `<a class="btn sm" href="${v.mapUrl}" target="_blank" rel="noopener">Маршрут</a>` : ''}</div>
+        </div>`).join('')}</div>${calBtn('venues')}`,
+    plan: o => `${h2(T.plan)}
+      <ol class="plan ${o.as || 'timeline'}">${I.plan.map(([t, x]) => `<li><time>${t}</time><span>${x}</span>${o.as === 'board' ? '<em>вовремя</em>' : ''}</li>`).join('')}</ol>`,
+    dress: () => `${h2(T.dress)}
+      <div class="dress"><p>${I.dress}</p>
+        <div class="sw" aria-label="Палитра праздника">${I.swatches.map(c => `<i style="background:${c}"></i>`).join('')}</div>
+      </div>`,
+    story: o => `${h2(o.title)}<ol class="story">${o.items.map(([y, t]) => `<li><b>${y}</b><span>${t}</span></li>`).join('')}</ol>`,
+    facts: o => `${h2(o.title)}<div class="facts">${o.items.map(([n, t]) => `<div><b>${n}</b><span>${t}</span></div>`).join('')}</div>`,
+    menu: o => `${h2(o.title)}<dl class="menu">${o.items.map(([k, t]) => `<div><dt>${k}</dt><dd>${t}</dd></div>`).join('')}</dl>`,
+    list: o => `${h2(o.title)}<ul class="list ${o.as || 'dash'}">${o.items.map(pair).map(([k, t]) => `<li><span>${k ? `<b>${k}</b>` : ''}${t}</span></li>`).join('')}</ul>`,
+    faq: o => `${h2(o.title)}<div class="faq">${o.items.map(([q, t]) => `<details><summary>${q}</summary><p>${t}</p></details>`).join('')}</div>`,
+    fields: o => `${h2(o.title)}<div class="fields">${o.items.map(([k, t]) => `<div><small>${k}</small><b>${t}</b></div>`).join('')}</div>`,
+    bye: () => `${rule}<p>${I.bye}</p>
+      <div class="sign">${couple}</div>
+      <button class="again" id="again" type="button">Открыть заново</button>`
+  };
+
   const letter = $('letter');
   if (I.left) letter.classList.add('left');
   letter.innerHTML = `
@@ -43,54 +89,19 @@
       ${art}
       <div class="dateline">${dateText}</div>
       <div class="label">${weekday}</div>
-    </section>
-    <section class="rv">${rule}<p>${I.lead}</p></section>
-    <section class="rv">
-      <h2>${T.count}</h2>
-      <div class="count">
-        <div><b id="cd">0</b><span id="cdl">дней</span></div><div><b id="ch">0</b><span id="chl">часов</span></div>
-        <div><b id="cm">0</b><span id="cml">минут</span></div><div><b id="cs">0</b><span id="csl">секунд</span></div>
-      </div>
-      <a class="btn" href="${icsHref}" download="wedding.ics">Добавить в календарь</a>
-    </section>
-    <section class="rv">
-      <h2>${T.place}</h2>
-      <div class="venues">${I.venues.map((v, i) => `
-        <div class="venue">
-          ${v.kind ? `<canvas width="640" height="320" data-kind="${v.kind}" data-seed="${(I.seed || 11) + i + 3}" role="img" aria-label="${v.title}: набросок"></canvas>` : ''}
-          <h3>${v.title}</h3>
-          <div class="when">${v.time} · ${v.place}</div>
-          <div class="addr">${v.address}</div>
-          ${v.mapUrl ? `<a class="btn sm" href="${v.mapUrl}" target="_blank" rel="noopener">Маршрут</a>` : ''}
-        </div>`).join('')}</div>
-    </section>
-    <section class="rv">
-      <h2>${T.plan}</h2>
-      <ol class="plan">${I.plan.map(([t, s]) => `<li><time>${t}</time><span>${s}</span></li>`).join('')}</ol>
-    </section>
-    <section class="rv">
-      <h2>${T.dress}</h2>
-      <div class="dress"><p>${I.dress}</p>
-        <div class="sw" aria-label="Палитра праздника">${I.swatches.map(c => `<i style="background:${c}"></i>`).join('')}</div>
-      </div>
-    </section>
-    <section class="rv">${rule}<p>${I.bye}</p>
-      <div class="sign">${couple}</div>
-      <button class="again" id="again" type="button">Открыть заново</button>
-    </section>`;
+    </section>` + order.map(o => `<section class="rv s-${o.type}">${blocks[o.type](o)}</section>`).join('');
   document.body.insertAdjacentHTML('beforeend', '<a class="back" href="../">← Все приглашения</a>');
 
   /* ---------- обратный отсчёт ---------- */
   const plural = (n, f) => f[n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
+  const put = (id, n, f) => { const el = $(id); if (el) { el.textContent = n; $(id + 'l').textContent = plural(n, f); } };
   function tick() {
     let s = Math.max(0, Math.floor((when - Date.now()) / 1000));
     const d = Math.floor(s / 86400); s -= d * 86400;
     const h = Math.floor(s / 3600); s -= h * 3600;
     const m = Math.floor(s / 60); s -= m * 60;
-    $('cd').textContent = d; $('cdl').textContent = plural(d, ['день', 'дня', 'дней']);
-    $('ch').textContent = h; $('chl').textContent = plural(h, ['час', 'часа', 'часов']);
-    $('cm').textContent = m; $('cml').textContent = plural(m, ['минута', 'минуты', 'минут']);
-    $('cs').textContent = s; $('csl').textContent = plural(s, ['секунда', 'секунды', 'секунд']);
+    put('cd', d, ['день', 'дня', 'дней']); put('ch', h, ['час', 'часа', 'часов']);
+    put('cm', m, ['минута', 'минуты', 'минут']); put('cs', s, ['секунда', 'секунды', 'секунд']);
   }
   tick(); setInterval(tick, 1000);
 
