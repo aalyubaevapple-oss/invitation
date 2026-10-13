@@ -223,9 +223,17 @@
     requestAnimationFrame(() => requestAnimationFrame(() => op.classList.remove('open')));
   });
 
+  /* ---------- сцена открытия слегка поворачивается за указателем ---------- */
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches, tilt = op.querySelector('[data-tilt]');
+  if (tilt && !calm) op.addEventListener('pointermove', e => {
+    if (op.classList.contains('open')) return;
+    tilt.style.setProperty('--ry', ((e.clientX / innerWidth - .5) * 14).toFixed(1) + 'deg');
+    tilt.style.setProperty('--rx', ((.5 - e.clientY / innerHeight) * 10).toFixed(1) + 'deg');
+  });
+
   /* ---------- параллакс обложки ---------- */
   const scene = letter.querySelector('.cover .scene, .cover .pair');
-  if (scene && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (scene && !calm) {
     let busy = false;
     addEventListener('scroll', () => {
       if (busy) return; busy = true;

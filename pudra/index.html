@@ -86,7 +86,7 @@
 <div class="opener" id="opener" data-ms="2800" role="button" tabindex="0" aria-label="Открыть приглашение">
   <div class="bg"></div>
   <div class="stage">
-    <div class="env3" id="env3">
+    <div class="env3" data-tilt>
       <div class="e-back"></div>
       <div class="e-card"><small>Приглашение</small><b>Анна и Михаил</b><span>17 · 07 · 2027</span></div>
       <div class="e-front"><i class="l"></i><i class="r"></i><i class="b"></i></div>
@@ -118,17 +118,5 @@ window.INVITE = {
 };
 </script>
 <script src="../assets/engine.js"></script>
-<script>
-/* Конверт слегка поворачивается за указателем, пока закрыт. */
-(() => {
-  const op = document.getElementById('opener'), env = document.getElementById('env3');
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  op.addEventListener('pointermove', e => {
-    if (op.classList.contains('open')) return;
-    env.style.setProperty('--ry', ((e.clientX / innerWidth - .5) * 14).toFixed(1) + 'deg');
-    env.style.setProperty('--rx', ((.5 - e.clientY / innerHeight) * 10).toFixed(1) + 'deg');
-  });
-})();
-</script>
 </body>
 </html>
